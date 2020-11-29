@@ -1,0 +1,10 @@
+{
+	"user": "Fairuz-Afdhal",
+	"repo": "wjcnrv3",
+	"entry": "wj-cnr.pwn",
+	"output": "wj-cnr.amx",
+	"dependencies": [
+		"sampctl/samp-stdlib"
+	],
+	"local": true
+}
