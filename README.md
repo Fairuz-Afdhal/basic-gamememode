@@ -7,7 +7,7 @@
 
 # What is WJCNR v3?
 
-WJCNR v3 is version 3 of WJCNR, the goal is to make the gamemode up to date with current programming styles and using sampctl.
+WJCNR v3 is version 3 of WJCNR, the goal is to make the gamemode up to date with current programming styles and using sampctl. Currently the gamemode is not playable, the goal is to make it compile smoothly.
 
 # Compiling
 Run the gamemode using sampctl.
