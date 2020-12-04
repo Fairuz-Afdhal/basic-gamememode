@@ -21,7 +21,9 @@
 		"NexiusTailer/Nex-AC",
 		"Zeex/samp-plugin-crashdetect",
 		"lassir/bcrypt-samp",
-		"oscar-broman/strlib"
+		"oscar-broman/strlib",
+		"kristoisberg/samp-map-zones",
+		"Southclaws/formatex"
 	],
 	"local": true,
 	"runtime": {

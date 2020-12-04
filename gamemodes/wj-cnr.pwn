@@ -29,6 +29,7 @@
 #include        < progress2 >
 #include	< nex-ac >
 #include        < bcrypt >
+#include        < formatex >
 #include        < strlib >
 
 
