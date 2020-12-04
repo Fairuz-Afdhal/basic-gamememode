@@ -10,8 +10,6 @@
 
 /* ** Definitions ** */
 #define AC_DEFAULT_TEAM				( 1337 )
-#define IsPlayerAndroid(%0)                 GetPVarInt(%0, "NotAndroid") == 0)
-#define IsPlayerNotAndroid(%0)              GetPVarInt(%0, "NotAndroid") == 1)
 
 /* ** Variables ** */
 enum E_PLAYER_HITPOINTS
@@ -486,16 +484,17 @@ stock AC_CheckForHealthHacks( playerid, iTicks )
 
 		if( !p_PlayerHealth[ playerid ] [ E_SYNCED ] )
 		{
-			if(IsPlayerNotAndroid(playerid)
+			if( currentHealthInt > healthShouldBeInt )
 			{
-				if( currentHealthInt > healthShouldBeInt )
+				switch( p_PlayerHealth[ playerid ] [ E_UPDATE_FAIL ]++ )
 				{
-					switch( p_PlayerHealth[ playerid ] [ E_UPDATE_FAIL ]++ )
+					case 0 .. 9: SetPlayerHealth( playerid, p_PlayerHealth[ playerid ] [ E_POINTS ] );
+					case 10: 
 					{
-						case 0 .. 9: SetPlayerHealth( playerid, p_PlayerHealth[ playerid ] [ E_POINTS ] );
-						case 10: SendClientMessage( playerid, 0xa9c4e4ff, "You have been kicked as you are desynced from the server. Please relog!" ), KickPlayerTimed( playerid ), printf("[health] Player %d was desynced thus kicked.", playerid);
-						//case 10: SetPlayerHealth( playerid, p_PlayerHealth[ playerid ] [ E_POINTS ] ), p_PlayerHealth[ playerid ] [ E_UPDATE_FAIL ] = 0;
+						SendClientMessage( playerid, 0xa9c4e4ff, "You have been kicked as you are desynced from the server. Please relog!" );
+						Player_Kick( playerid ), printf("[health] Player %d was desynced thus kicked.", playerid);
 					}
+					//case 10: SetPlayerHealth( playerid, p_PlayerHealth[ playerid ] [ E_POINTS ] ), p_PlayerHealth[ playerid ] [ E_UPDATE_FAIL ] = 0;
 				}
 			}
 		}
@@ -535,14 +534,15 @@ stock AC_CheckForHealthHacks( playerid, iTicks )
 
 		if( !p_PlayerArmour[ playerid ] [ E_SYNCED ] )
 		{
-			if(IsPlayerNotAndroid(playerid)
+			if( currentArmourInt > ArmourShouldBeInt )
 			{
-				if( currentArmourInt > ArmourShouldBeInt )
+				switch( p_PlayerArmour[ playerid ] [ E_UPDATE_FAIL ]++ )
 				{
-					switch( p_PlayerArmour[ playerid ] [ E_UPDATE_FAIL ]++ )
+					case 0 .. 9: SetPlayerArmour( playerid, p_PlayerArmour[ playerid ] [ E_POINTS ] );
+					case 10: 
 					{
-						case 0 .. 9: SetPlayerArmour( playerid, p_PlayerArmour[ playerid ] [ E_POINTS ] );
-						case 10: SendClientMessage( playerid, 0xa9c4e4ff, "You have been kicked as you are desynced from the server. Please relog!" ), KickPlayerTimed( playerid ), printf("[armour] Player %d was desynced thus kicked.", playerid);
+						SendClientMessage( playerid, 0xa9c4e4ff, "You have been kicked as you are desynced from the server. Please relog!" );
+						Player_Kick(playerid), printf("[armour] Player %d was desynced thus kicked.", playerid);
 					}
 				}
 			}

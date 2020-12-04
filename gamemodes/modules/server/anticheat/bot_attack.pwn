@@ -17,7 +17,7 @@ static stock botattack_LastConnection = 0;
 static stock botattack_ConnectionSpamCount = 0;
 
 /* ** Hooks ** */
-hook OnScriptInit( )
+hook OnGameModeInit()
 {
 	botattack_ServerInitTS = gettime( );
 	return 1;

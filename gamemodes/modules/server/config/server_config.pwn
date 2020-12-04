@@ -20,9 +20,11 @@
 hook OnGameModeInit( )
 {
 	// set server query information
-	static modetext[32];
-	format(modetext, sizeof(modetext), ""SERVER_MODE_TEXT" %s "UPDATE_CODENAME"", GetServerVersion( ));
-	SetGameModeText( modetext );
+	printf("[WJ-CNR] WJ-CNR successfully initialized. (Compiled date: %s %s)", __date,__time);
+
+	//new modetext[32];
+	//format(modetext, sizeof(modetext), ""SERVER_MODE_TEXT" %s "UPDATE_CODENAME"", GetServerVersion());
+	//SetGameModeText( modetext );
 	SetServerRule( "hostname", SERVER_NAME );
 	SetServerRule( "language", SERVER_LANGUAGE );
 	SetServerRule( "mapname", SERVER_MAP );
