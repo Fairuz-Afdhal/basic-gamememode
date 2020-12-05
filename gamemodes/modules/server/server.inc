@@ -9,3 +9,7 @@
 
 // anticheat
 #include "modules\server\anticheat\mainanticheat.pwn"
+
+//server stuff
+#include "modules\server\server_functions.pwn"
+#include "modules\server\security.pwn"

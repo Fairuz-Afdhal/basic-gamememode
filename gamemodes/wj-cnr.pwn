@@ -26,10 +26,9 @@
 #include	< evf >
 #include        < progress2 >
 #include	< nex-ac >
-#include        < bcrypt >
+#include        < samp_bcrypt >
 #include        < formatex >
 #include        < strlib >
-
 #include        <server>
 #include        <player>
 

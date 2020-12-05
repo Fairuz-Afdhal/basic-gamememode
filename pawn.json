@@ -22,7 +22,9 @@
 		"oscar-broman/strlib",
 		"kristoisberg/samp-map-zones",
 		"Southclaws/formatex",
-		"dakyskye/pawn-env"
+		"dakyskye/pawn-env",
+		"TommyB123/eSelection",
+		"Sreyas-Sreelal/samp-bcrypt"
 	],
 	"local": true,
 	"runtime": {
