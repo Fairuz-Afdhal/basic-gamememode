@@ -13,3 +13,5 @@
 //server stuff
 #include "modules\server\server_functions.pwn"
 #include "modules\server\security.pwn"
+#include "modules\server\floodcontrols.pwn"
+#include "modules\server\server_vars.pwn"

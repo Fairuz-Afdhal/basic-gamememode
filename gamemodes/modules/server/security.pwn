@@ -49,27 +49,26 @@ hook OnRconLoginAttempt( ip[ ], password[ ], success )
 			}
 		}
 	}
-	else
+/*	else
 	{
 		if ( IsPlayerConnected( playerid ) && ! IsPlayerServerMaintainer( playerid ) )
 		{
 			RangeBanPlayer( playerid );
 			return 0;
 		}
-	}
+	}*/
 	return 1;
 }
 
 hook OnPlayerConnect( playerid )
 {
-	static
-		szName[ MAX_PLAYER_NAME ], szIP[ 16 ];
+	static szName[ MAX_PLAYER_NAME ], szIP[ 16 ];
 
-    GetPlayerIp( playerid, szIP, sizeof( szIP ) );
-    GetPlayerName( playerid, szName, sizeof( szName ) );
+    GetPlayerIp(playerid, szIP, sizeof(szIP));
+    GetPlayerName(playerid, szName, sizeof(szName));
 
-    if ( IsPlayerNPC( playerid ) ) {
-		CallLocalFunction( "OnServerNpcConnect", "d", playerid );
+    if(IsPlayerNPC(playerid)) {
+		CallLocalFunction("OnServerNpcConnect", "d", playerid);
 		return 1;
 	}
 
@@ -77,25 +76,19 @@ hook OnPlayerConnect( playerid )
 	strcpy( p_PlayerName[ playerid ], szName );
 
 	// get out the bots/invalid player ids
-	if ( ! ( 0 <= playerid < MAX_PLAYERS ) ) {
-		Kick( playerid );
-		return Y_HOOKS_BREAK_RETURN_1;
-	}
-
-	// check for invalid name
-	if ( strlen( ReturnPlayerName( playerid ) ) <= 2 ) {
-		Kick( playerid );
+	if (!( 0 <= playerid < MAX_PLAYERS ) ) {
+		Kick(playerid);
 		return Y_HOOKS_BREAK_RETURN_1;
 	}
 
 	// check if player name is "no-one" since it is used for unowned entities
-	if ( ! strcmp( ReturnPlayerName( playerid ), "No-one", true ) ) {
-	 	Kick( playerid );
+	if (!strcmp(ReturnPlayerName(playerid), "No-one", true)) {
+	 	Kick(playerid);
 		return Y_HOOKS_BREAK_RETURN_1;
 	}
 
 	// check advertisers
-	if ( textContainsIP( ReturnPlayerName( playerid ) ) ) {
+	if (IsTextContainsIP(ReturnPlayerName(playerid))) {
 	 	Kick( playerid );
 		return Y_HOOKS_BREAK_RETURN_1;
 	}
@@ -157,38 +150,3 @@ stock Security_SetPlayerName( playerid, const name[ ] )
 #define SetPlayerName Security_SetPlayerName
 
 /* ** Functions ** */
-stock RangeBanPlayer( playerid )
-{
-	if ( !IsPlayerConnected( playerid ) )
-	    return 0;
-
-	new
-	    szBan[ 24 ],
-	    szIP[ 16 ]
-	;
-	GetPlayerIp( playerid, szIP, sizeof( szIP ) );
-    GetRangeIP( szIP, sizeof( szIP ) );
-
-	format( szBan, sizeof( szBan ), "banip %s", szIP );
-	SendRconCommand( szBan );
-
-	KickPlayerTimed( playerid );
-
-	return 1;
-}
-
-stock GetRangeIP( szIP[ ], iSize = sizeof( szIP ) )
-{
-	new
-		iCount = 0
-	;
-	for( new i; szIP[ i ] != '\0'; i ++ )
-	{
-	    if ( szIP[ i ] == '.' && ( iCount ++ ) == 1 )
-	    {
-	        strdel( szIP, i, strlen( szIP ) );
-	        break;
-	    }
-	}
-	format( szIP, iSize, "%s.*.*", szIP );
-}

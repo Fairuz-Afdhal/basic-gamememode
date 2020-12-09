@@ -1,5 +1,5 @@
 /*
     West Java Cops and Robbers Modules
  */
-
- #include "modules\player\functions.pwn"
+#include        < attachment-fix >
+#include "modules\player\player_functions.pwn"

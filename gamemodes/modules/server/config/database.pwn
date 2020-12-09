@@ -14,14 +14,14 @@
 /* * Includes * */
 #include        < YSI_Coding\y_hooks >
 
-new MySQL: g_Sql;
+new MySQL: handle;
 
 hook OnGameModeInit()
 {
     new MySQLOpt:options = mysql_init_options();
     mysql_set_option(options, AUTO_RECONNECT, true); //disable auto-reconnect
     
-    g_Sql = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE, options);
+    handle = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE, options);
 
     if(mysql_errno() != 0) 
 		print("[MySQL]: Could not connect to database!");

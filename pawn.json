@@ -24,7 +24,9 @@
 		"Southclaws/formatex",
 		"dakyskye/pawn-env",
 		"TommyB123/eSelection",
-		"Sreyas-Sreelal/samp-bcrypt"
+		"Sreyas-Sreelal/samp-bcrypt",
+		"Fairuz-Afdhal/SAMPMailJS",
+		"BrunoBM16/samp-attachments-fix"
 	],
 	"local": true,
 	"runtime": {
