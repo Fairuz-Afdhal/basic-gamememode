@@ -67,7 +67,7 @@
 #define COLOR_FIREMAN               0xA8343470
 #define COLOR_MEDIC                 0x00FF8070
 /* ** Functions ** */
-stock setRed( color, red ) // Set the red intensity on a colour.
+setRed( color, red ) // Set the red intensity on a colour.
 {
 	if ( red > 0xFF )
 	    red	= 0xFF;
@@ -77,7 +77,7 @@ stock setRed( color, red ) // Set the red intensity on a colour.
 	return ( color & 0x00FFFFFF ) | ( red << 24 );
 }
 
-stock setGreen( color, green ) // Set the green intensity on a colour.
+setGreen( color, green ) // Set the green intensity on a colour.
 {
 	if ( green > 0xFF )
 	    green	= 0xFF;
@@ -87,7 +87,7 @@ stock setGreen( color, green ) // Set the green intensity on a colour.
 	return ( color & 0xFF00FFFF ) | ( green << 16 );
 }
 
-stock setBlue( color, blue ) // Set the blue intensity on a colour.
+setBlue( color, blue ) // Set the blue intensity on a colour.
 {
 	if ( blue > 0xFF )
 	    blue	= 0xFF;
@@ -97,7 +97,7 @@ stock setBlue( color, blue ) // Set the blue intensity on a colour.
 	return ( color & 0xFFFF00FF ) | ( blue << 8 );
 }
 
-stock setAlpha( color, alpha ) // Set the alpha intensity on a colour.
+setAlpha( color, alpha ) // Set the alpha intensity on a colour.
 {
 	if ( alpha > 0xFF )
 	    alpha	= 0xFF;
@@ -107,46 +107,46 @@ stock setAlpha( color, alpha ) // Set the alpha intensity on a colour.
 	return ( color & 0xFFFFFF00 ) | alpha;
 }
 
-stock stripRed( color ) // Remove all red from a colour.
+stripRed( color ) // Remove all red from a colour.
 	return ( color ) & 0x00FFFFFF;
 
-stock stripGreen( color ) // Remove all green from a colour.
+stripGreen( color ) // Remove all green from a colour.
 	return ( color ) & 0xFF00FFFF;
 
-stock stripBlue( color ) // Remove all blue from a colour.
+stripBlue( color ) // Remove all blue from a colour.
 	return ( color ) & 0xFFFF00FF;
 
-stock stripAlpha( color ) // Remove all alpha from a colour.
+stripAlpha( color ) // Remove all alpha from a colour.
 	return ( color ) & 0xFFFFFF00;
 
-stock fillRed( color ) // Fill all red in a colour.
+fillRed( color ) // Fill all red in a colour.
 	return ( color ) | 0xFF000000;
 
-stock fillGreen( color ) // Fill all green in a colour.
+fillGreen( color ) // Fill all green in a colour.
 	return ( color ) | 0x00FF0000;
 
-stock fillBlue( color ) // Fill all blue in a colour.
+fillBlue( color ) // Fill all blue in a colour.
 	return ( color ) | 0x0000FF00;
 
-stock fillAlpha( color ) // Fill all alpha in a colour.
+fillAlpha( color ) // Fill all alpha in a colour.
 	return ( color ) | 0x000000FF;
 
-stock getRed( color ) // Get the intensity of red in a colour.
+getRed( color ) // Get the intensity of red in a colour.
 	return ( color >> 24 ) & 0x000000FF;
 
-stock getGreen( color ) // Get the intensity of green in a colour.
+getGreen( color ) // Get the intensity of green in a colour.
 	return ( color >> 16 ) & 0x000000FF;
 
-stock getBlue( color ) // Get the intensity of blue in a colour.
+getBlue( color ) // Get the intensity of blue in a colour.
 	return ( color >> 8 ) & 0x000000FF;
 
-stock getAlpha( color ) // Get the intensity of alpha in a colour.
+getAlpha( color ) // Get the intensity of alpha in a colour.
 	return ( color ) & 0x000000FF;
 
-stock makeColor( red=0, green=0, blue=0, alpha=0 ) // Make a colour with the specified intensities.
+makeColor( red=0, green=0, blue=0, alpha=0 ) // Make a colour with the specified intensities.
 	return ( setAlpha( setBlue( setGreen( setRed( 0x00000000, red ), green ), blue ), alpha ) );
 
-stock setColor( color, red = -1, green = -1, blue = -1, alpha = -1 ) // Set the properties of a colour.
+setColor( color, red = -1, green = -1, blue = -1, alpha = -1 ) // Set the properties of a colour.
 {
 	if ( red != -1 )
 	    color = setRed    ( color, red );

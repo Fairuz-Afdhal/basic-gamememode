@@ -6,7 +6,7 @@
 #define SendUsage(%0,%1)                    (SendClientMessagef(%0,-1,"{FFAF00}[USAGE]"COL_WHITE" " # %1))
 #define SendError(%0,%1) 			        (SendClientMessagef(%0,-1,"{F81414}[ERROR]"COL_WHITE" " # %1))
 #define SendServerMessage(%0,%1)            (SendClientMessagef(%0,-1,"{C0C0C0}[SERVER]"COL_WHITE" " # %1))
-#define SendClientMessageToAllf(%0) (SendClientMessagef(INVALID_PLAYER_ID, %0))
+#define SendClientMessageToAllf(%0) 		(SendClientMessagef(INVALID_PLAYER_ID, %0))
 
 SendClientMessagef( playerid, colour, const format[], va_args<> )
 {
@@ -51,7 +51,7 @@ Player_RangeBan(playerid)
 	return 1;
 }
 
-stock GetRangeIP(szIP[ ], iSize = sizeof(szIP))
+GetRangeIP(szIP[ ], iSize = sizeof(szIP))
 {
 	new
 		iCount = 0

@@ -98,7 +98,8 @@ UpdateServerVariable(const variable_name[ 64 ], int_value = 0, Float: float_valu
 			return; // prevent a query from being fired
 		}
 	}
-	mysql_single_query( query );
+	mysql_tquery(handle, query, "", "");
+	return 1;
 }
 
 AddServerVariable( const variable_name[ 64 ], const value[ 128 ], type )
@@ -122,5 +123,6 @@ AddServerVariable( const variable_name[ 64 ], const value[ 128 ], type )
 			return; // prevent a query from being fired
 		}
 	}
-	mysql_single_query( query );
+	mysql_tquery(handle, query, "", "");
+	return 1;
 }

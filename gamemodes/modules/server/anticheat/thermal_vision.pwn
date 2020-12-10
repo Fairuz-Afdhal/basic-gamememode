@@ -19,7 +19,7 @@ hook OnPlayerUpdate(playerid)
 }
 
 /* ** Functions ** */
-static stock AC_NightThermalVisionHack(playerid) // Created by wups
+static AC_NightThermalVisionHack(playerid) // Created by wups
 {
     static
     	weapon;

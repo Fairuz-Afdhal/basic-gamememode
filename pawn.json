@@ -26,7 +26,9 @@
 		"TommyB123/eSelection",
 		"Sreyas-Sreelal/samp-bcrypt",
 		"Fairuz-Afdhal/SAMPMailJS",
-		"BrunoBM16/samp-attachments-fix"
+		"BrunoBM16/samp-attachments-fix",
+		"Southclaws/samp-weapon-data",
+		"pawn-lang/pawn-stdlib"
 	],
 	"local": true,
 	"runtime": {
@@ -73,7 +75,8 @@
 			"includes": [
 				"legacy",
 				"gamemodes/modules/server/",
-				"gamemodes/modules/player/"
+				"gamemodes/modules/player/",
+				"gamemodes/modules/gta/"
 			],
 			"compiler": {}
 		}

@@ -110,7 +110,7 @@ hook OnPlayerRequestClass( playerid, classid ) {
 }
 
 /* ** Functions ** */
-stock AC_DetectedCheatToString( iDetection ) {
+AC_DetectedCheatToString( iDetection ) {
 	new
 		szString[ 16 ] = "unknown";
 
@@ -125,13 +125,13 @@ stock AC_DetectedCheatToString( iDetection ) {
 	return szString;
 }
 
-stock ac_IsPointInArea( Float: X, Float: Y, Float: minx, Float: maxx, Float: miny, Float: maxy )
+ac_IsPointInArea( Float: X, Float: Y, Float: minx, Float: maxx, Float: miny, Float: maxy )
  	return ( X > minx && X < maxx && Y > miny && Y < maxy );
 
-stock Float: ac_PointDistance( Float: X, Float: Y, Float: dstX, Float: dstY )
+Float: ac_PointDistance( Float: X, Float: Y, Float: dstX, Float: dstY )
 	return ( ( X - dstX ) * ( X - dstX ) ) + ( ( Y - dstY ) * ( Y - dstY ) );
 
-stock Float: ac_GetDistanceBetweenPlayers( iPlayer1, iPlayer2, &Float: fDistance = Float: 0x7F800000 )
+Float: ac_GetDistanceBetweenPlayers( iPlayer1, iPlayer2, &Float: fDistance = Float: 0x7F800000 )
 {
     static
     	Float: fX, Float: fY, Float: fZ;
@@ -142,15 +142,15 @@ stock Float: ac_GetDistanceBetweenPlayers( iPlayer1, iPlayer2, &Float: fDistance
     return fDistance;
 }
 
-stock AC_GetLastUpdateTime( playerid ) {
+AC_GetLastUpdateTime( playerid ) {
 	return p_acUpdateTime[ playerid ];
 }
 
-stock bool: AC_IsPlayerSpawned( playerid ) {
+bool: AC_IsPlayerSpawned( playerid ) {
 	return p_acSpawned{ playerid };
 }
 
-stock AC_SetPlayerSpawned( playerid, bool: spawned ) {
+AC_SetPlayerSpawned( playerid, bool: spawned ) {
 	p_acSpawned{ playerid } = spawned;
 }
 

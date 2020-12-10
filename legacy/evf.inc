@@ -316,7 +316,7 @@ static const s_CarColors[][] = {
     native IsValidVehicle(vehicleid);
 #endif
 
-stock static ResetVehicleProperties(vehicleid)
+static ResetVehicleProperties(vehicleid)
 {
     s_VehicleTrailerID[vehicleid] = INVALID_VEHICLE_ID;
 
@@ -326,7 +326,7 @@ stock static ResetVehicleProperties(vehicleid)
 	}
 }
 
-stock static SetVehiclePropertyValue(vehicleid, type, value)
+static SetVehiclePropertyValue(vehicleid, type, value)
 {
 	new
 	    string[12];
@@ -336,7 +336,7 @@ stock static SetVehiclePropertyValue(vehicleid, type, value)
 	setproperty(4, !"", ((vehicleid << 2) + type), string);
 }
 
-stock static GetVehiclePropertyValue(vehicleid, type)
+static GetVehiclePropertyValue(vehicleid, type)
 {
 	new
 	    string[12];
@@ -346,12 +346,12 @@ stock static GetVehiclePropertyValue(vehicleid, type)
 	return strval(string);
 }
 
-stock static IsVehiclePropertySet(vehicleid, type)
+static IsVehiclePropertySet(vehicleid, type)
 {
     return existproperty(4, !"", (vehicleid << 2) + type);
 }
 
-stock GetVehicleRandomColors(modelid, &color1, &color2)
+GetVehicleRandomColors(modelid, &color1, &color2)
 {
 	new
 		index = 0;
@@ -387,7 +387,7 @@ stock GetVehicleRandomColors(modelid, &color1, &color2)
 	return 1;
 }
 
-stock GetVehicleParams(vehicleid, type)
+GetVehicleParams(vehicleid, type)
 {
 	new
 		params[7]
@@ -397,7 +397,7 @@ stock GetVehicleParams(vehicleid, type)
 	return (!(params[type] <= 0));
 }
 
-stock SetVehicleParams(vehicleid, type, status, delay = 0)
+SetVehicleParams(vehicleid, type, status, delay = 0)
 {
 	new
 		params[7];
@@ -419,7 +419,7 @@ stock SetVehicleParams(vehicleid, type, status, delay = 0)
 	return 0;
 }
 
-stock GetVehicleOffset(vehicleid, type, &Float:x, &Float:y, &Float:z)
+GetVehicleOffset(vehicleid, type, &Float:x, &Float:y, &Float:z)
 {
     new Float:fPos[4], Float:fSize[3];
 
@@ -462,7 +462,7 @@ stock GetVehicleOffset(vehicleid, type, &Float:x, &Float:y, &Float:z)
 	return 1;
 }
 
-stock GetNearestVehicle(playerid)
+GetNearestVehicle(playerid)
 {
  	new
 	 	Float:fX,
@@ -496,7 +496,7 @@ stock GetNearestVehicle(playerid)
 	return INVALID_VEHICLE_ID;
 }
 
-stock IsVehicleSeatOccupied(vehicleid, seatid)
+IsVehicleSeatOccupied(vehicleid, seatid)
 {
 	if (!GetVehicleModel(vehicleid))
 	{
@@ -515,7 +515,7 @@ stock IsVehicleSeatOccupied(vehicleid, seatid)
 	return 0;
 }
 
-stock GetVehicleNextSeat(vehicleid, passenger = 1)
+GetVehicleNextSeat(vehicleid, passenger = 1)
 {
 	new
 	    seats = GetVehicleSeats(vehicleid);
@@ -533,7 +533,7 @@ stock GetVehicleNextSeat(vehicleid, passenger = 1)
 	return INVALID_SEAT_ID;
 }
 
-stock GetVehicleModelSeats(modelid)
+GetVehicleModelSeats(modelid)
 {
     static const s_VehicleSeats[] =
 	{
@@ -549,7 +549,7 @@ stock GetVehicleModelSeats(modelid)
 	return (modelid < 400 || modelid > 611) ? (0) : (s_VehicleSeats[(modelid - 400)]);
 }
 
-stock Float:GetVehicleTopSpeed(vehicleid)
+Float:GetVehicleTopSpeed(vehicleid)
 {
 	new model = GetVehicleModel(vehicleid);
 
@@ -560,7 +560,7 @@ stock Float:GetVehicleTopSpeed(vehicleid)
    	return 0.0;
 }
 
-stock GetVehicleColor(vehicleid, &color1, &color2)
+GetVehicleColor(vehicleid, &color1, &color2)
 {
 	if (IsValidVehicle(vehicleid))
 	{
@@ -571,7 +571,7 @@ stock GetVehicleColor(vehicleid, &color1, &color2)
 	return 0;
 }
 
-stock GetVehiclePaintjob(vehicleid)
+GetVehiclePaintjob(vehicleid)
 {
 	if (IsValidVehicle(vehicleid))
 	{
@@ -587,7 +587,7 @@ stock GetVehiclePaintjob(vehicleid)
 	return 0;
 }
 
-stock ResetVehiclePaintjob(vehicleid)
+ResetVehiclePaintjob(vehicleid)
 {
 	if (IsValidVehicle(vehicleid))
 	{
@@ -598,7 +598,7 @@ stock ResetVehiclePaintjob(vehicleid)
 	return 0;
 }
 
-stock EVF_LinkVehicleToInterior(vehicleid, interiorid)
+EVF_LinkVehicleToInterior(vehicleid, interiorid)
 {
 	new
 	    ret = LinkVehicleToInterior(vehicleid, interiorid);

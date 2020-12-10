@@ -8,10 +8,14 @@
         /* ** SA-MP Includes ** */
 #include        < a_samp >
 
+#undef MAX_PLAYERS
+#define MAX_PLAYERS 200
+
 #include        < YSI_Coding\y_hooks >
 #include        < YSI_Coding\y_timers >
 #include        < YSI_Coding\y_va >
 #include 	< YSI_Data\y_iterate >
+#include	< YSI_Data\y_bit >
 
 #include        < a_mysql >
 #include 	< izcmd >
@@ -26,6 +30,8 @@
 
 #include        <server>
 #include        <player>
+#include        <gta>
+
 
 main() {}
 

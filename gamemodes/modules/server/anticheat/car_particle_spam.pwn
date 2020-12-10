@@ -12,12 +12,12 @@
 DEFINE_HOOK_REPLACEMENT 			( Vehicle, Veh );
 
 /* ** Variables ** */
-static stock
+static
 	p_DamageSpamTime				[ MAX_PLAYERS ],
 	p_DamageSpamCount				[ MAX_PLAYERS char ];
 
 /* ** Function Hooks ** */
-stock AC_RepairVehicle( vehicleid )
+AC_RepairVehicle( vehicleid )
 {
 	foreach ( new playerid : Player ) if ( GetPlayerVehicleID( playerid ) == vehicleid ) {
 		p_DamageSpamCount{ playerid } = 0;

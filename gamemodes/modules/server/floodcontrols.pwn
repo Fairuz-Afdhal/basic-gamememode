@@ -73,7 +73,7 @@ public OnPlayerConnect(playerid) {
 
 #define OnPlayerConnect FC_OnPlayerConnect
 
-static stock IpToInt(const szIP[]) {
+static IpToInt(const szIP[]) {
 	new
 		aiBytes[1],
 		iPos = 0

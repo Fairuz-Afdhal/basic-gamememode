@@ -133,7 +133,7 @@ hook OnPlayerFloodControl( playerid, iCount, iTimeSpan ) {
 #endif
 
 /* ** Hooked Functions ** */
-stock Security_SetPlayerName( playerid, const name[ ] )
+Security_SetPlayerName( playerid, const name[ ] )
 {
 	if ( 0 <= playerid < MAX_PLAYERS ) {
 		format ( p_PlayerName[ playerid ], sizeof ( p_PlayerName[ ] ), "%s", name );

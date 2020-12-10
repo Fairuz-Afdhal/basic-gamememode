@@ -74,7 +74,7 @@ hook OnVehicleMod( playerid, vehicleid, componentid )
 }
 
 /* ** Functions ** */
-stock CarMod_IsLegalCarMod( vehicleide, componentid ) {
+CarMod_IsLegalCarMod( vehicleide, componentid ) {
 
     new
     	modok = false;
@@ -107,7 +107,7 @@ stock CarMod_IsLegalCarMod( vehicleide, componentid ) {
     return modok;
 }
 
-stock CarMod_IsWheelModel( modelid ) {
+CarMod_IsWheelModel( modelid ) {
 	new
 		wheelmodels[ 17 ] = { 1025, 1073, 1074, 1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1096, 1097, 1098 };
 
@@ -117,7 +117,7 @@ stock CarMod_IsWheelModel( modelid ) {
 	return false;
 }
 
-stock CarMod_IllegalCarNitroIde( carmodel ) {
+CarMod_IllegalCarNitroIde( carmodel ) {
 
 	new
 		illegalvehs[ 29 ] = { 581, 523, 462, 521, 463, 522, 461, 448, 468, 586, 509, 481, 510, 472, 473, 493, 595, 484, 430, 453, 452, 446, 454, 590, 569, 537, 538, 570, 449 };

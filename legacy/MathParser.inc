@@ -85,9 +85,9 @@ enum e_Error {
 };
 
 // Avoid warnings
-static stock Float: Parser::Calculate(const Float: fValue1, const Float: fValue2, const iOpIdx);
-static stock Float: Parser::ParseValue(const szExpr[], &e_Error: iError, &iIdx);
-static stock Float: Parser::Evaluate(const szExpr[], &e_Error: iError, &iIdx);
+static Float: Parser::Calculate(const Float: fValue1, const Float: fValue2, const iOpIdx);
+static Float: Parser::ParseValue(const szExpr[], &e_Error: iError, &iIdx);
+static Float: Parser::Evaluate(const szExpr[], &e_Error: iError, &iIdx);
 
 static
 	g_eiIndex[e_Index],
@@ -101,7 +101,7 @@ MathParser(); public MathParser() { // Prevent crash from SYSREQ.C
 	CallRemoteFunction("_", "");
 }
 
-stock Float: Math::ParseExpression(szExpr[], &e_Error: iError = ERROR_NONE, &iIdx = 0, const iSize = sizeof(szExpr)) {
+Float: Math::ParseExpression(szExpr[], &e_Error: iError = ERROR_NONE, &iIdx = 0, const iSize = sizeof(szExpr)) {
 	static
 		bool: s_Init
 	;
@@ -132,7 +132,7 @@ stock Float: Math::ParseExpression(szExpr[], &e_Error: iError = ERROR_NONE, &iId
 	return Parser::Evaluate(szExpr, iError, iIdx);
 }
 
-stock Math::AddFunction(const szName[], const szFunc[], const iParams) {
+Math::AddFunction(const szName[], const szFunc[], const iParams) {
 	if(strlen(szName) >= MAX_FUNCTION_LENGTH) {
 		Debug(Error, AddFunction, "MAX_FUNCTION_LENGTH (%d) exceeded! \n", MAX_FUNCTION_LENGTH);
 		return -1;
@@ -175,7 +175,7 @@ stock Math::AddFunction(const szName[], const szFunc[], const iParams) {
 	}
 }
 
-stock Math::RemoveFunction(const szName[]) {
+Math::RemoveFunction(const szName[]) {
 	for(new i = 0; i < MAX_FUNCTIONS; ++i) {
 		if(g_aeFunction[i][Func_szName][0] != EOS) {
 			static
@@ -197,7 +197,7 @@ stock Math::RemoveFunction(const szName[]) {
 	return 0;
 }
 
-static stock Parser::ReplaceFunctions(szExpr[], &e_Error: iError, const iSize) {
+static Parser::ReplaceFunctions(szExpr[], &e_Error: iError, const iSize) {
 	new
 		szFormat[MAX_FUNCTION_PARAMS] = {
 			'f', ...
@@ -297,7 +297,7 @@ static stock Parser::ReplaceFunctions(szExpr[], &e_Error: iError, const iSize) {
 	return 1;
 }
 
-stock Math::AddConstant(const szConst[], const Float: fValue) {
+Math::AddConstant(const szConst[], const Float: fValue) {
 	if(strlen(szConst) >= MAX_CONSTANT_LENGTH) {
 		Debug(Error, AddConstant, "MAX_CONSTANT_LENGTH (%d) exceeded! \n", MAX_CONSTANT_LENGTH);
 		return -1;
@@ -320,7 +320,7 @@ stock Math::AddConstant(const szConst[], const Float: fValue) {
 	}
 }
 
-stock Math::RemoveConstant(const szConst[]) {
+Math::RemoveConstant(const szConst[]) {
 	for(new i = 0; i < MAX_CONSTANTS; ++i) {
 		if(g_aeConstant[i][Const_szConst][0] != EOS) {
 			static
@@ -342,7 +342,7 @@ stock Math::RemoveConstant(const szConst[]) {
 	return 0;
 }
 
-static stock Parser::ReplaceConstants(szExpr[], const iSize = sizeof(szExpr)) {
+static Parser::ReplaceConstants(szExpr[], const iSize = sizeof(szExpr)) {
 	for(new i = 0; i < MAX_CONSTANTS; ++i) {
 		if(g_aeConstant[i][Const_szConst][0] != EOS) {
 			static
@@ -370,7 +370,7 @@ static stock Parser::ReplaceConstants(szExpr[], const iSize = sizeof(szExpr)) {
 	}
 }
 
-stock Math::AddOperator(const szOp[], const szFunc[], const iPrecedence, const e_Assoc: iAssoc) {
+Math::AddOperator(const szOp[], const szFunc[], const iPrecedence, const e_Assoc: iAssoc) {
 	if(strlen(szOp) >= MAX_OPERATOR_LENGTH) {
 		Debug(Error, AddOperator, "MAX_OPERATOR_LENGTH (%d) exceeded! \n", MAX_OPERATOR_LENGTH);
 		return -1;
@@ -410,7 +410,7 @@ stock Math::AddOperator(const szOp[], const szFunc[], const iPrecedence, const e
 	}
 }
 
-stock Math::RemoveOperator(const szOp[]) {
+Math::RemoveOperator(const szOp[]) {
 	for(new i = 0; i < MAX_OPERATORS; ++i) {
 		if(g_aeOperator[i][Op_szOp][0] != EOS) {
 			if(!strcmp(g_aeOperator[i][Op_szOp], szOp, false, MAX_OPERATOR_LENGTH)) {
@@ -427,7 +427,7 @@ stock Math::RemoveOperator(const szOp[]) {
 	return 0;
 }
 
-static stock Float: Parser::Evaluate(const szExpr[], &e_Error: iError, &iIdx) {
+static Float: Parser::Evaluate(const szExpr[], &e_Error: iError, &iIdx) {
 	new
 		iStack,
 		eStack[e_Stack],
@@ -459,7 +459,7 @@ static stock Float: Parser::Evaluate(const szExpr[], &e_Error: iError, &iIdx) {
 	return 0.0;
 }
 
-static stock Float: Parser::Calculate(const Float: fValue1, const Float: fValue2, const iOpIdx) {
+static Float: Parser::Calculate(const Float: fValue1, const Float: fValue2, const iOpIdx) {
 	if(g_aeOperator[iOpIdx][Op_szOp][0] != EOS) {
 		static
 			s_szFunc[MAX_OPERATOR_FUNCTION_LENGTH]
@@ -471,7 +471,7 @@ static stock Float: Parser::Calculate(const Float: fValue1, const Float: fValue2
 	return 0.0;
 }
 
-static stock Parser::ParseOperator(const szExpr[], &e_Error: iError, &iIdx, eStack[e_Stack]) {
+static Parser::ParseOperator(const szExpr[], &e_Error: iError, &iIdx, eStack[e_Stack]) {
 	Parser::StripSpaces(szExpr, iIdx);
 	
 	eStack[Stk_iOpIdx] = 0;
@@ -504,7 +504,7 @@ static stock Parser::ParseOperator(const szExpr[], &e_Error: iError, &iIdx, eSta
 	return 0;
 }
 
-static stock Float: Parser::ParseValue(const szExpr[], &e_Error: iError, &iIdx) {
+static Float: Parser::ParseValue(const szExpr[], &e_Error: iError, &iIdx) {
 	Parser::StripSpaces(szExpr, iIdx);
 	
 	if(iError == ERROR_NONE) {
@@ -594,7 +594,7 @@ static stock Float: Parser::ParseValue(const szExpr[], &e_Error: iError, &iIdx) 
 	return 0.0;
 }
 
-static stock Parser::GetParantheseClosePos(szExpr[], iPos, const iSize) {
+static Parser::GetParantheseClosePos(szExpr[], iPos, const iSize) {
 	new
 		iOpened,
 		iClosed
@@ -617,7 +617,7 @@ static stock Parser::GetParantheseClosePos(szExpr[], iPos, const iSize) {
 	return iPos;
 }
 
-static stock Parser::Explode(szSrc[], const szDelim[], aszDest[][], iSize = sizeof(aszDest), iLen = sizeof(aszDest[])) { // Slice
+static Parser::Explode(szSrc[], const szDelim[], aszDest[][], iSize = sizeof(aszDest), iLen = sizeof(aszDest[])) { // Slice
 	new
 		iPos = -1,
 		iLastPos,
@@ -641,7 +641,7 @@ static stock Parser::Explode(szSrc[], const szDelim[], aszDest[][], iSize = size
 	return i;
 }
 
-static stock Parser::PrintErrors(const e_Error: iError, const iIdx) {
+static Parser::PrintErrors(const e_Error: iError, const iIdx) {
 	switch(iError) {
 		case ERROR_LOGICAL_VALUE: {
 			Debug(Syntax Error, Parsing, "Invalid value found at index %d! \n", iIdx);
@@ -658,13 +658,13 @@ static stock Parser::PrintErrors(const e_Error: iError, const iIdx) {
 	}
 }
 
-static stock Parser::StripSpaces(const szInput[], &iIdx) {
+static Parser::StripSpaces(const szInput[], &iIdx) {
 	while(Parser::IsSpace(szInput[iIdx]) != 0) {
 		iIdx++;
 	}
 }
 
-static stock Parser::IsSpace(const iChar) {
+static Parser::IsSpace(const iChar) {
 	switch(iChar) {
 		case ' ', '\n', '\r', '\t': {
 			return 1;
@@ -673,7 +673,7 @@ static stock Parser::IsSpace(const iChar) {
 	return 0;
 }
 
-static stock Parser::IsAlpha(const iChar) {
+static Parser::IsAlpha(const iChar) {
 	switch(iChar) {
 		case 'a' .. 'z', 'A' .. 'Z': {
 			return 1;
@@ -682,7 +682,7 @@ static stock Parser::IsAlpha(const iChar) {
 	return 0;
 }
 
-static stock Parser::ToString(const Float: fValue) {
+static Parser::ToString(const Float: fValue) {
 	static
 		szValue[16]
 	;

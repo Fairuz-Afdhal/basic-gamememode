@@ -15,7 +15,7 @@ static stock
 ;
 
 /* ** Functions ** */
-stock AC_CheckForSilentAimbot( playerid, hittype, hitid )
+AC_CheckForSilentAimbot( playerid, hittype, hitid )
 {
     static
     	Float: fVictimX, Float: fVictimY, Float: fVictimZ,

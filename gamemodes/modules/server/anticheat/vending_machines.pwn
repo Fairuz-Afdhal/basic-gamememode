@@ -219,7 +219,7 @@ public VendingMachineUsed( playerid, Float: fHealthGiven )
 }
 
 /* ** Functions ** */
-stock ResetPlayerVendingMachineData( playerid )
+ResetPlayerVendingMachineData( playerid )
 {
 	if ( 0 <= playerid < MAX_PLAYERS && p_VendingUseTimer[ playerid ] != -1 )
 	{

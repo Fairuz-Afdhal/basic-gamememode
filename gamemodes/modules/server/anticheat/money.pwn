@@ -239,7 +239,7 @@ hook OnVehicleRespray(playerid, vehicleid, color1, color2)
 }
 
 /* ** Functions ** */
-stock GivePlayerCash(playerid, money)
+GivePlayerCash(playerid, money)
 {
     p_Cash[playerid] += money;
     ResetPlayerMoney(playerid);
@@ -247,21 +247,21 @@ stock GivePlayerCash(playerid, money)
     CallRemoteFunction("OnPlayerMoneyChanged", "dd", playerid, money);
 }
 
-stock SetPlayerCash( playerid, money )
+SetPlayerCash( playerid, money )
 {
     p_Cash[ playerid ] = money;
     ResetPlayerMoney(playerid);
     GivePlayerMoney(playerid, p_Cash[ playerid ]);
 }
 
-stock ResetPlayerCash(playerid)
+ResetPlayerCash(playerid)
 {
     p_Cash[ playerid ] = 0;
     ResetPlayerMoney(playerid);
     GivePlayerMoney(playerid, p_Cash[ playerid ]);
 }
 
-stock GetPlayerCash(playerid)
+GetPlayerCash(playerid)
 {
 	return p_Cash[playerid];
 }

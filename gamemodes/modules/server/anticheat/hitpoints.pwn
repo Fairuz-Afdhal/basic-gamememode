@@ -196,7 +196,7 @@ forward OnPlayerDeathEx 			( playerid, killerid, reason, Float: damage, bodypart
 
 // Function (AC_UpdateKillerData)
 
-stock AC_UpdateDamageInformation( playerid, attackerid, weaponid )
+AC_UpdateDamageInformation( playerid, attackerid, weaponid )
 {
 	p_LastTookDamage[ playerid ] = GetTickCount( );
 	p_LastDamageIssuer[ playerid ] = attackerid;
@@ -205,12 +205,12 @@ stock AC_UpdateDamageInformation( playerid, attackerid, weaponid )
 
 // Function (AC_GetPlayerHealth)
 
-stock Float: AC_GetPlayerHealth( playerid )
+Float: AC_GetPlayerHealth( playerid )
 	return p_PlayerHealth[ playerid ] [ E_POINTS ];
 
 // Function (AddPlayerHealth)
 
-stock AC_AddPlayerHealth( playerid, Float:amount )
+AC_AddPlayerHealth( playerid, Float:amount )
 {
 	p_PlayerHealth[ playerid ] [ E_POINTS ] += amount;
 	p_PlayerHealth[ playerid ] [ E_SYNCED ] = false;
@@ -220,7 +220,7 @@ stock AC_AddPlayerHealth( playerid, Float:amount )
 
 // Function Hook (SetPlayerHealth)
 
-stock AC_SetPlayerHealth( playerid, Float:amount )
+AC_SetPlayerHealth( playerid, Float:amount )
 {
 	p_PlayerHealth[ playerid ] [ E_POINTS ] = amount;
 	p_PlayerHealth[ playerid ] [ E_SYNCED ] = false;
@@ -246,7 +246,7 @@ stock AC_SetPlayerHealth( playerid, Float:amount )
 
 // Function Hook (SetPlayerArmour)
 
-stock AC_SetPlayerArmour( playerid, Float:amount )
+AC_SetPlayerArmour( playerid, Float:amount )
 {
 	p_PlayerArmour[ playerid ] [ E_POINTS ] = amount;
 	p_PlayerArmour[ playerid ] [ E_SYNCED ] = false;
@@ -262,7 +262,7 @@ stock AC_SetPlayerArmour( playerid, Float:amount )
 
 // Function Hook (SetPlayerTeam)
 
-stock AC_SetPlayerTeam( playerid, teamid )
+AC_SetPlayerTeam( playerid, teamid )
 {
 	if( teamid != AC_DEFAULT_TEAM ) {
 		printf("[ACWarning] You cannot use SetPlayerTeam as you have hitpoint hack detection enabled (teamid %d, default %d).", teamid, AC_DEFAULT_TEAM );
@@ -451,7 +451,7 @@ hook OnPlayerGiveDamage( playerid, damagedid, Float: amount, weaponid, bodypart 
 }
 
 // Functions (Player)
-stock AC_CheckForHealthHacks( playerid, iTicks )
+AC_CheckForHealthHacks( playerid, iTicks )
 {
 	new
 		Float: currentHealth,
@@ -613,7 +613,7 @@ hook OnPlayerDeath( playerid, killerid, reason )
 }
 
 /* ** Functions ** */
-stock ForcePlayerKill( playerid, killerid, weaponid )
+ForcePlayerKill( playerid, killerid, weaponid )
 {
 	p_LastTookDamage[ playerid ] = GetTickCount( );
 	p_LastDamageIssuer[ playerid ] = killerid;

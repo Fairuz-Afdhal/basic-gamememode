@@ -12,9 +12,9 @@
 static const BOT_ATTACK_BLOCK_TIME = 120000; // 2 minutes
 
 /* ** Variables ** */
-static stock botattack_ServerInitTS = 0;
-static stock botattack_LastConnection = 0;
-static stock botattack_ConnectionSpamCount = 0;
+static botattack_ServerInitTS = 0;
+static botattack_LastConnection = 0;
+static botattack_ConnectionSpamCount = 0;
 
 /* ** Hooks ** */
 hook OnGameModeInit()

@@ -145,7 +145,7 @@ hook OnPlayerRequestClass( playerid, classid ) {
 /* ** Function Hooks ** */
 // Function Hook (GivePlayerWeapon)
 
-stock AC_GivePlayerWeapon( playerid, weaponid, ammo )
+AC_GivePlayerWeapon( playerid, weaponid, ammo )
 {
 	p_PlayerWeaponUpdateTime[ playerid ] = GetTickCount( ) + 2000;
 
@@ -165,7 +165,7 @@ stock AC_GivePlayerWeapon( playerid, weaponid, ammo )
 
 // Function Hook (SetPlayerArmedWeapon)
 
-stock AC_SetPlayerArmedWeapon( playerid, weaponid )
+AC_SetPlayerArmedWeapon( playerid, weaponid )
 {
 	if ( 0 <= weaponid <= AC_MAX_WEAPONS && p_CurrentArmedWeapon{ playerid } != weaponid ) {
 		p_PlayerWeaponUpdateTime[ playerid ] = GetTickCount( ) + 2000;
@@ -183,7 +183,7 @@ stock AC_SetPlayerArmedWeapon( playerid, weaponid )
 
 // Function Hook (ResetPlayerWeapons)
 
-stock AC_ResetPlayerWeapons( playerid )
+AC_ResetPlayerWeapons( playerid )
 {
 	p_PlayerWeaponUpdateTime[ playerid ] = GetTickCount( ) + 2000;
 
@@ -202,7 +202,7 @@ stock AC_ResetPlayerWeapons( playerid )
 
 // Function Hook (SetSpawnInfo)
 
-stock AC_SetSpawnInfo( playerid, team, skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
+AC_SetSpawnInfo( playerid, team, skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
 {
 	if ( weapon1 != -1 && weapon1 < AC_MAX_WEAPONS ) p_PlayerHasWeapon[ playerid ] { weapon1 } = true;
 	if ( weapon2 != -1 && weapon2 < AC_MAX_WEAPONS ) p_PlayerHasWeapon[ playerid ] { weapon2 } = true;
@@ -220,7 +220,7 @@ stock AC_SetSpawnInfo( playerid, team, skin, Float: x, Float: y, Float: z, Float
 
 // Function Hook (AddPlayerClass)
 
-stock AC_AddPlayerClass( skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
+AC_AddPlayerClass( skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
 {
 	new
 		classid = Iter_Free(classes);
@@ -250,7 +250,7 @@ stock AC_AddPlayerClass( skin, Float: x, Float: y, Float: z, Float: Angle, weapo
 
 // Function Hook (AddPlayerClass)
 
-stock AC_AddPlayerClassEx( teamid, skin, Float:x, Float:y, Float:z, Float:Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
+AC_AddPlayerClassEx( teamid, skin, Float:x, Float:y, Float:z, Float:Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
 {
 	new
 		classid = Iter_Free(classes);
@@ -280,7 +280,7 @@ stock AC_AddPlayerClassEx( teamid, skin, Float:x, Float:y, Float:z, Float:Angle,
 
 // Function Hook (CreateDynamicPickup)
 
-stock AC_CreateDynamicPickup( modelid, type, Float: x, Float: y, Float: z, worldid = -1, interiorid = -1, playerid = -1, Float: streamdistance = 100.0 )
+AC_CreateDynamicPickup( modelid, type, Float: x, Float: y, Float: z, worldid = -1, interiorid = -1, playerid = -1, Float: streamdistance = 100.0 )
 {
 	new
 		id = CreateDynamicPickup( modelid, type, x, y, z, worldid, interiorid, playerid, streamdistance );

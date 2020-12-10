@@ -42,7 +42,7 @@ hook OnPlayerKeyStateChange( playerid, newkeys, oldkeys ) {
 	return 1;
 }
 
-stock AC_CheckForAutoCbug( playerid, weaponid )
+AC_CheckForAutoCbug( playerid, weaponid )
 {
 	// Anti-Rapid Fire
 	if( !p_cbugFireTicks[ playerid ] ) p_cbugFireTicks[ playerid ] = GetTickCount( );
