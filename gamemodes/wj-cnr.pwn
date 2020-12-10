@@ -16,6 +16,7 @@
 #include        < YSI_Coding\y_va >
 #include 	< YSI_Data\y_iterate >
 #include	< YSI_Data\y_bit >
+#include        < YSI_Visual\y_classes >
 
 #include        < a_mysql >
 #include 	< izcmd >

@@ -220,7 +220,7 @@ AC_SetSpawnInfo( playerid, team, skin, Float: x, Float: y, Float: z, Float: Angl
 
 // Function Hook (AddPlayerClass)
 
-AC_AddPlayerClass( skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
+stock AC_AddPlayerClass( skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
 {
 	new
 		classid = Iter_Free(classes);
@@ -250,7 +250,7 @@ AC_AddPlayerClass( skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, we
 
 // Function Hook (AddPlayerClass)
 
-AC_AddPlayerClassEx( teamid, skin, Float:x, Float:y, Float:z, Float:Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
+stock AC_AddPlayerClassEx( teamid, skin, Float:x, Float:y, Float:z, Float:Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
 {
 	new
 		classid = Iter_Free(classes);

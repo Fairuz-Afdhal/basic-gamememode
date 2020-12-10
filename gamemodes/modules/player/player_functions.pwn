@@ -21,8 +21,6 @@ hook OnPlayerDeathEx( playerid, killerid, reason, Float: damage, bodypart )
     return 1;
 }
 
-Player_IsSpawned(playerid)
-    return Bit_Get(PlayerSpawn, playerid);
 
 KickPlayer( playerid )
 {
