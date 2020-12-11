@@ -145,7 +145,7 @@ hook OnPlayerRequestClass( playerid, classid ) {
 /* ** Function Hooks ** */
 // Function Hook (GivePlayerWeapon)
 
-AC_GivePlayerWeapon( playerid, weaponid, ammo )
+stock AC_GivePlayerWeapon( playerid, weaponid, ammo )
 {
 	p_PlayerWeaponUpdateTime[ playerid ] = GetTickCount( ) + 2000;
 
@@ -165,7 +165,7 @@ AC_GivePlayerWeapon( playerid, weaponid, ammo )
 
 // Function Hook (SetPlayerArmedWeapon)
 
-AC_SetPlayerArmedWeapon( playerid, weaponid )
+stock AC_SetPlayerArmedWeapon( playerid, weaponid )
 {
 	if ( 0 <= weaponid <= AC_MAX_WEAPONS && p_CurrentArmedWeapon{ playerid } != weaponid ) {
 		p_PlayerWeaponUpdateTime[ playerid ] = GetTickCount( ) + 2000;
@@ -183,7 +183,7 @@ AC_SetPlayerArmedWeapon( playerid, weaponid )
 
 // Function Hook (ResetPlayerWeapons)
 
-AC_ResetPlayerWeapons( playerid )
+stock AC_ResetPlayerWeapons( playerid )
 {
 	p_PlayerWeaponUpdateTime[ playerid ] = GetTickCount( ) + 2000;
 
@@ -202,7 +202,7 @@ AC_ResetPlayerWeapons( playerid )
 
 // Function Hook (SetSpawnInfo)
 
-AC_SetSpawnInfo( playerid, team, skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
+stock AC_SetSpawnInfo( playerid, team, skin, Float: x, Float: y, Float: z, Float: Angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo )
 {
 	if ( weapon1 != -1 && weapon1 < AC_MAX_WEAPONS ) p_PlayerHasWeapon[ playerid ] { weapon1 } = true;
 	if ( weapon2 != -1 && weapon2 < AC_MAX_WEAPONS ) p_PlayerHasWeapon[ playerid ] { weapon2 } = true;
@@ -276,11 +276,11 @@ stock AC_AddPlayerClassEx( teamid, skin, Float:x, Float:y, Float:z, Float:Angle,
 #else
     #define _ALS_AddPlayerClassEx
 #endif
-#define AddPlayerClassEx AC_AddPlayerClassEx
+#define AddPlayerClassEx stock AC_AddPlayerClassEx
 
 // Function Hook (CreateDynamicPickup)
 
-AC_CreateDynamicPickup( modelid, type, Float: x, Float: y, Float: z, worldid = -1, interiorid = -1, playerid = -1, Float: streamdistance = 100.0 )
+stock AC_CreateDynamicPickup( modelid, type, Float: x, Float: y, Float: z, worldid = -1, interiorid = -1, playerid = -1, Float: streamdistance = 100.0 )
 {
 	new
 		id = CreateDynamicPickup( modelid, type, x, y, z, worldid, interiorid, playerid, streamdistance );

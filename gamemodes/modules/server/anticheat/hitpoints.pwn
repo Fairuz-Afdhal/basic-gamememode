@@ -196,7 +196,7 @@ forward OnPlayerDeathEx 			( playerid, killerid, reason, Float: damage, bodypart
 
 // Function (AC_UpdateKillerData)
 
-AC_UpdateDamageInformation( playerid, attackerid, weaponid )
+stock AC_UpdateDamageInformation( playerid, attackerid, weaponid )
 {
 	p_LastTookDamage[ playerid ] = GetTickCount( );
 	p_LastDamageIssuer[ playerid ] = attackerid;
@@ -205,12 +205,12 @@ AC_UpdateDamageInformation( playerid, attackerid, weaponid )
 
 // Function (AC_GetPlayerHealth)
 
-Float: AC_GetPlayerHealth( playerid )
+stock Float: AC_GetPlayerHealth( playerid )
 	return p_PlayerHealth[ playerid ] [ E_POINTS ];
 
 // Function (AddPlayerHealth)
 
-AC_AddPlayerHealth( playerid, Float:amount )
+stock AC_AddPlayerHealth( playerid, Float:amount )
 {
 	p_PlayerHealth[ playerid ] [ E_POINTS ] += amount;
 	p_PlayerHealth[ playerid ] [ E_SYNCED ] = false;
@@ -220,7 +220,7 @@ AC_AddPlayerHealth( playerid, Float:amount )
 
 // Function Hook (SetPlayerHealth)
 
-AC_SetPlayerHealth( playerid, Float:amount )
+stock AC_SetPlayerHealth( playerid, Float:amount )
 {
 	p_PlayerHealth[ playerid ] [ E_POINTS ] = amount;
 	p_PlayerHealth[ playerid ] [ E_SYNCED ] = false;
@@ -246,7 +246,7 @@ AC_SetPlayerHealth( playerid, Float:amount )
 
 // Function Hook (SetPlayerArmour)
 
-AC_SetPlayerArmour( playerid, Float:amount )
+stock AC_SetPlayerArmour( playerid, Float:amount )
 {
 	p_PlayerArmour[ playerid ] [ E_POINTS ] = amount;
 	p_PlayerArmour[ playerid ] [ E_SYNCED ] = false;
@@ -262,7 +262,7 @@ AC_SetPlayerArmour( playerid, Float:amount )
 
 // Function Hook (SetPlayerTeam)
 
-AC_SetPlayerTeam( playerid, teamid )
+stock AC_SetPlayerTeam( playerid, teamid )
 {
 	if( teamid != AC_DEFAULT_TEAM ) {
 		printf("[ACWarning] You cannot use SetPlayerTeam as you have hitpoint hack detection enabled (teamid %d, default %d).", teamid, AC_DEFAULT_TEAM );

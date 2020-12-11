@@ -17,7 +17,7 @@ static
 	p_DamageSpamCount				[ MAX_PLAYERS char ];
 
 /* ** Function Hooks ** */
-AC_RepairVehicle( vehicleid )
+stock AC_RepairVehicle( vehicleid )
 {
 	foreach ( new playerid : Player ) if ( GetPlayerVehicleID( playerid ) == vehicleid ) {
 		p_DamageSpamCount{ playerid } = 0;

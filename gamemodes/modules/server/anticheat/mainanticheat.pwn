@@ -110,7 +110,7 @@ hook OnPlayerRequestClass( playerid, classid ) {
 }
 
 /* ** Functions ** */
-AC_DetectedCheatToString( iDetection ) {
+stock AC_DetectedCheatToString( iDetection ) {
 	new
 		szString[ 16 ] = "unknown";
 
@@ -125,13 +125,13 @@ AC_DetectedCheatToString( iDetection ) {
 	return szString;
 }
 
-ac_IsPointInArea( Float: X, Float: Y, Float: minx, Float: maxx, Float: miny, Float: maxy )
+stock ac_IsPointInArea( Float: X, Float: Y, Float: minx, Float: maxx, Float: miny, Float: maxy )
  	return ( X > minx && X < maxx && Y > miny && Y < maxy );
 
-Float: ac_PointDistance( Float: X, Float: Y, Float: dstX, Float: dstY )
+stock Float: ac_PointDistance( Float: X, Float: Y, Float: dstX, Float: dstY )
 	return ( ( X - dstX ) * ( X - dstX ) ) + ( ( Y - dstY ) * ( Y - dstY ) );
 
-Float: ac_GetDistanceBetweenPlayers( iPlayer1, iPlayer2, &Float: fDistance = Float: 0x7F800000 )
+stock Float: ac_GetDistanceBetweenPlayers( iPlayer1, iPlayer2, &Float: fDistance = Float: 0x7F800000 )
 {
     static
     	Float: fX, Float: fY, Float: fZ;

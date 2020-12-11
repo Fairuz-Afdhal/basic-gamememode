@@ -1,0 +1,1 @@
+#include "modules\admins\cmd_ban.pwn"
