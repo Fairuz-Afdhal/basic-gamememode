@@ -41,10 +41,10 @@ hook OnRconLoginAttempt( ip[ ], password[ ], success )
 		if( IsPlayerConnected( playerid ) )
 		{
 		    p_RconLoginFails{ playerid } ++;
-		 	SendClientMessagef( playerid, -1, "{FF0000}[ERROR]"COL_WHITE" You have entered an invalid rcon password. {C0C0C0}[%d/2]", p_RconLoginFails{ playerid } );
+		 	SendError( playerid, "You have entered an invalid rcon password. {C0C0C0}[%d/2]", p_RconLoginFails{ playerid } );
 
 		 	if( p_RconLoginFails{ playerid } >= 2 ) {
-				SendClientMessagef( playerid, -1, "{C0C0C0}[SERVER]"COL_WHITE" If you are not the server operator or manager, don't bother trying!" );
+				SendClientMessage( playerid, -1, "{C0C0C0}[SERVER]"COL_WHITE" If you are not the server operator or manager, don't bother trying!" );
 				Kick( playerid );
 			}
 		}

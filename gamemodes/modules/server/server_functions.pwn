@@ -3,24 +3,13 @@
 #define HOLDING(%0)                         ((newkeys & (%0)) == (%0))
 #define PRESSED(%0)                         (((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
 #define RELEASED(%0)                        (((newkeys & (%0)) != (%0)) && ((oldkeys & (%0)) == (%0)))
-#define SendUsage(%0,%1)                    (SendClientMessagef(%0,-1,"{FFAF00}[USAGE]"COL_WHITE" " # %1))
-#define SendError(%0,%1) 			        (SendClientMessagef(%0,-1,"{F81414}[ERROR]"COL_WHITE" " # %1))
-#define SendServerMessage(%0,%1)            (SendClientMessagef(%0,-1,"{C0C0C0}[SERVER]"COL_WHITE" " # %1))
-#define SendClientMessageToAllf(%0) 		(SendClientMessagef(INVALID_PLAYER_ID, %0))
+#define SendUsage(%0,%1)                    (va_SendClientMessage(%0,-1,"{FFAF00}[USAGE]"COL_WHITE" " # %1))
+#define SendError(%0,%1) 			        (va_SendClientMessage(%0,-1,"{F81414}[ERROR]"COL_WHITE" " # %1))
+#define SendServerMessage(%0,%1)            (va_SendClientMessage(%0,-1,"{C0C0C0}[SERVER]"COL_WHITE" " # %1))
+#define thread                              function // used to look pretty for mysql
+#define BCRYPT_COST 12
 
-SendClientMessagef( playerid, colour, const format[], va_args<> )
-{
-    static
-		out[ 144 ];
-
-    va_format( out, sizeof( out ), format, va_start<3> );
-
-	if(playerid == INVALID_PLAYER_ID){
-		return SendClientMessageToAll(colour, out);
-	} else {
-        return SendClientMessage(playerid, colour, out);
-    }
-}
+new Timestamp:gTime;
 
 IsTextContainsIP(const string[])
 {
@@ -66,3 +55,12 @@ GetRangeIP(szIP[ ], iSize = sizeof(szIP))
 	}
 	format(szIP, iSize, "%s.*.*", szIP);
 }
+
+task _OnServerTick[1000]()
+{
+	CallLocalFunction( "OnServerUpdate", "" );
+    gTime = Now();
+}
+
+stock GetServerTime() 
+	return _:gTime;

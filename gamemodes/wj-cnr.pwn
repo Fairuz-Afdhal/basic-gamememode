@@ -11,14 +11,19 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 200
 
+#include    < a_mysql >
+#include    < samp_bcrypt >
 #include    < YSI_Coding\y_hooks >
 #include    < YSI_Coding\y_timers >
 #include    < YSI_Coding\y_va >
 #include 	< YSI_Data\y_iterate >
 #include	< YSI_Data\y_bit >
 #include    < YSI_Visual\y_classes >
+#include    < YSI_Visual\y_dialog >
+#include    < YSI_Visual\y_inline >
+#include    < YSI_Extra\y_inline_bcrypt >
+#include    < YSI_Extra\y_inline_mysql >
 
-#include    < a_mysql >
 #include 	< izcmd >
 #include 	< sscanf2 >
 #include 	< streamer >
@@ -28,11 +33,13 @@
 #include    < strlib >
 #include    < Pawn.Raknet >
 #include    < gvar >
-#include    <geolite>
+#include    < geolite >
+#include    < chrono >
 
 #include    <server>
-#include    <player>
 #include    <gta>
+#include    <player>
+//#include    <admin>
 
 
 main() {}
@@ -74,6 +81,11 @@ public OnPlayerTakePlayerDamage( playerid, issuerid, &Float: amount, weaponid, b
 }
 
 public OnPlayerDeathEx( playerid, killerid, reason, Float: damage, bodypart )
+{
+    return 1;
+}
+
+public OnPlayerUpdateEx(playerid)
 {
     return 1;
 }

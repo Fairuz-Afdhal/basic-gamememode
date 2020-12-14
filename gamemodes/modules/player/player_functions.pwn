@@ -21,7 +21,6 @@ hook OnPlayerDeathEx( playerid, killerid, reason, Float: damage, bodypart )
     return 1;
 }
 
-
 KickPlayer( playerid )
 {
     SetPVarInt( playerid, "banned_connection", 1 );
@@ -34,8 +33,9 @@ timer Player_Kick[500](playerid)
 	KickPlayer(playerid);
 } 
 
+forward OnPlayerUpdateEx(playerid);
 ptask PlayerPerSecondTimer[1000](playerid) {
     if(Player_IsSpawned(playerid)) {
-        CallLocalFunction("OnPlayerSecondUpdate", "i", playerid);
+        CallLocalFunction("OnPlayerUpdateEx", "i", playerid);
     }
 }

@@ -35,7 +35,7 @@
 /* ** Hooks ** */
 hook OnGameModeInit() 
 {
-	mysql_tquery(handle, "SELECT * FROM server", "OnLoadServerVariables", "" );
+	mysql_tquery(g_SQL, "SELECT * FROM server", "OnLoadServerVariables", "" );
 	return 1;
 }
 
@@ -81,24 +81,24 @@ UpdateServerVariable(const variable_name[ 64 ], int_value = 0, Float: float_valu
 	{
 		case GLOBAL_VARTYPE_INT: 
 		{
-			mysql_format( handle, query, sizeof ( query ), "UPDATE server SET int_val=%d WHERE name='%e'", int_value, variable_name );
+			mysql_format( g_SQL, query, sizeof ( query ), "UPDATE server SET int_val=%d WHERE name='%e'", int_value, variable_name );
 			SetGVarInt( variable_name, int_value );
 		}
 		case GLOBAL_VARTYPE_STRING: 
 		{
-			mysql_format( handle, query, sizeof ( query ), "UPDATE server SET string_val='%e' WHERE name ='%e'", string_value, variable_name );
+			mysql_format( g_SQL, query, sizeof ( query ), "UPDATE server SET string_val='%e' WHERE name ='%e'", string_value, variable_name );
 			SetGVarString( variable_name, string_value );
 		}
 		case GLOBAL_VARTYPE_FLOAT: 
 		{
-			mysql_format( handle, query, sizeof ( query ), "UPDATE server SET float_val=%f WHERE name ='%e'", float_value, variable_name );
+			mysql_format( g_SQL, query, sizeof ( query ), "UPDATE server SET float_val=%f WHERE name ='%e'", float_value, variable_name );
 			SetGVarFloat( variable_name, float_value );
 		}
 		default: {
 			return; // prevent a query from being fired
 		}
 	}
-	mysql_tquery(handle, query, "", "");
+	mysql_tquery(g_SQL, query, "", "");
 	return 1;
 }
 
@@ -110,19 +110,19 @@ AddServerVariable( const variable_name[ 64 ], const value[ 128 ], type )
 	switch ( type )
 	{
 		case GLOBAL_VARTYPE_INT: {
-			mysql_format( handle, query, sizeof ( query ), "INSERT IGNORE INTO `SERVER`(`NAME`,`INT_VAL`,`TYPE`) VALUES ('%e',%d,%d)", variable_name, strval( value ), type );
+			mysql_format( g_SQL, query, sizeof ( query ), "INSERT IGNORE INTO `SERVER`(`NAME`,`INT_VAL`,`TYPE`) VALUES ('%e',%d,%d)", variable_name, strval( value ), type );
 		}
 		case GLOBAL_VARTYPE_STRING: {
-			mysql_format( handle, query, sizeof ( query ), "INSERT IGNORE INTO `SERVER`(`NAME`,`STRING_VAL`,`TYPE`) VALUES ('%e','%e',%d)", variable_name, value, type );
+			mysql_format( g_SQL, query, sizeof ( query ), "INSERT IGNORE INTO `SERVER`(`NAME`,`STRING_VAL`,`TYPE`) VALUES ('%e','%e',%d)", variable_name, value, type );
 		}
 		case GLOBAL_VARTYPE_FLOAT: {
-			mysql_format( handle, query, sizeof ( query ), "INSERT IGNORE INTO `SERVER`(`NAME`,`FLOAT_VAL`,`TYPE`) VALUES ('%e',%f,%d)", variable_name, floatstr( value ), type );
+			mysql_format( g_SQL, query, sizeof ( query ), "INSERT IGNORE INTO `SERVER`(`NAME`,`FLOAT_VAL`,`TYPE`) VALUES ('%e',%f,%d)", variable_name, floatstr( value ), type );
 		}
 		default: 
 		{
 			return; // prevent a query from being fired
 		}
 	}
-	mysql_tquery(handle, query, "", "");
+	mysql_tquery(g_SQL, query, "", "");
 	return 1;
 }

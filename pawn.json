@@ -18,7 +18,6 @@
 		"Southclaws/progress2:v2.3.0",
 		"NexiusTailer/Nex-AC",
 		"Zeex/samp-plugin-crashdetect:v4.20",
-		"lassir/bcrypt-samp:v2.2.3",
 		"oscar-broman/strlib",
 		"kristoisberg/samp-map-zones",
 		"Southclaws/formatex",
@@ -28,7 +27,8 @@
 		"Fairuz-Afdhal/SAMPMailJS",
 		"BrunoBM16/samp-attachments-fix",
 		"Southclaws/samp-weapon-data",
-		"pawn-lang/pawn-stdlib"
+		"pawn-lang/pawn-stdlib",
+		"Southclaws/pawn-chrono"
 	],
 	"local": true,
 	"runtime": {
@@ -76,7 +76,8 @@
 				"legacy",
 				"gamemodes/modules/server/",
 				"gamemodes/modules/player/",
-				"gamemodes/modules/gta/"
+				"gamemodes/modules/gta/",
+				"gamemodes/modules/admin/"
 			],
 			"compiler": {}
 		}
