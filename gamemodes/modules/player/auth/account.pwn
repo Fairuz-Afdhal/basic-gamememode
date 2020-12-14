@@ -119,7 +119,7 @@ Account_Create(playerid, password[])
 
 Account_InsertToDatabase(playerid, const hash[]) 
 {
-    inline const OnRegister() {11
+    inline const OnRegister() {
         Player_SetAccountID(playerid, cache_insert_id());
 
 		
@@ -149,7 +149,54 @@ Account_LoginDialog(playerid)
 
 		}
 		else{
-			
+			if(isnull(inputtext)){
+				SendError(playerid, "Password tidak bisa kosong.");
+			}
+
+			inline const _response_load()
+			{
+				if (!cache_num_rows()){
+					// There was an error loading the data.  Try again.
+					SendError(playerid, "Login failed - please try again.");
+					Account_LoginDialog(playerid);
+					return;
+				}
+
+				// Get the password hash and unique (user) ID.
+				new accid,
+					hash[128];
+				
+				if (!cache_get_value(0, "password", hash) || !cache_get_value_int(0, "id", accid)){
+					// There was an error loading the data.  Try again.
+					SendError(playerid, "Login failed - please try again.");
+					Account_LoginDialog(playerid);
+					return;
+				}
+		
+				// Called when the comparison between the stored and entered
+				// passwords is complete (so the login is complete).
+				inline const Account_PasswordCheck(bool:same)
+				{
+					// Are the passwords the same?
+					if (same){
+						// The player logged in.  Tell everything else so they can
+						// respond appropriately (start loading data etc.)
+						CallLocalFunction("OnPlayerLogin", "dd", playerid, accid);
+					}
+					else
+					{
+						SendError(playerid, "Login failed - unknown username or password.");
+						
+						// Try again.
+						Account_LoginDialog(playerid);
+					}
+				}
+				
+				// Check that the DB hash is equal to `inputtext` after hashing.
+				BCrypt_CheckInline(inputtext, hash, using inline Account_PasswordCheck);
+			}
+
+			MySQL_TQueryInline(g_SQL, using inline _response_load, "SELECT `password`, `id` FROM `users` WHERE `name` = '%e'", ReturnPlayerName(playerid));
 		}
 	}
 
@@ -158,7 +205,6 @@ Account_LoginDialog(playerid)
 	Masukan password untuk login.\n\n\
 	"COL_GREY"Jika kamu bukan pemilik akun ini, keluar lalu masuk dengan nickname lain.", ReturnPlayerName(playerid));
 	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_PASSWORD, ""COL_WHITE"Account - Authentication", string, "Login", "Leave");
-	return 1;
 }
 
 Player_IsLoggedIn(playerid) return Bit_Get(p_PlayerLogged, playerid);
@@ -169,4 +215,9 @@ Player_SetAccountID(playerid, value) {
 
 Player_GetAccountID(playerid) {
     return p_AccountID[playerid];
+}
+
+hook OnPlayerLogin(playerid, accountid)
+{
+	printf("Login completed %d", accountid);
 }

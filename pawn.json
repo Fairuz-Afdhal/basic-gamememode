@@ -6,7 +6,7 @@
 	"dependencies": [
 		"sampctl/samp-stdlib",
 		"pawn-lang/YSI-Includes@5.x",
-		"pBlueG/SA-MP-MySQL:R41-4",
+		"pBlueG/SA-MP-MySQL",
 		"YashasSamaga/I-ZCMD",
 		"Y-Less/sscanf:2.10.2-r2",
 		"samp-incognito/samp-streamer-plugin:v2.9.4",
