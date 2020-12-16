@@ -39,3 +39,5 @@ ptask PlayerPerSecondTimer[1000](playerid) {
         CallLocalFunction("OnPlayerUpdateEx", "i", playerid);
     }
 }
+
+Player_IsSpawned(playerid) return Bit_Get(PlayerSpawn, playerid);

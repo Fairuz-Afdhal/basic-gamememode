@@ -624,6 +624,7 @@ ForcePlayerKill( playerid, killerid, weaponid )
 }
 
 /* ** Modules ** */
-#if defined __ac__money
+/*#if defined __ac__money
 	#include "modules\server\anticheat\vending_machines.pwn"
 #endif
+*/

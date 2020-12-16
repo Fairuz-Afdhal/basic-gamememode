@@ -1,0 +1,1 @@
+#include "modules\objects\class_selection.pwn"

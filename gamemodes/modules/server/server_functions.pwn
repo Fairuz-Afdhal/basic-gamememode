@@ -56,6 +56,7 @@ GetRangeIP(szIP[ ], iSize = sizeof(szIP))
 	format(szIP, iSize, "%s.*.*", szIP);
 }
 
+forward OnServerUpdate();
 task _OnServerTick[1000]()
 {
 	CallLocalFunction( "OnServerUpdate", "" );

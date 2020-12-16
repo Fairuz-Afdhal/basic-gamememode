@@ -19,7 +19,6 @@
 #include    < YSI_Coding\y_va >
 #include 	< YSI_Data\y_iterate >
 #include	< YSI_Data\y_bit >
-#include    < YSI_Visual\y_classes >
 #include    < YSI_Visual\y_dialog >
 #include    < YSI_Visual\y_inline >
 #include    < YSI_Extra\y_inline_bcrypt >
@@ -41,7 +40,7 @@
 #include    <gta>
 #include    <player>
 //#include    <admin>
-
+#include    <objects>
 
 main() {}
 
@@ -52,12 +51,6 @@ public OnGameModeInit()
 
 public OnPlayerConnect(playerid)
 {
-    return 1;
-}
-
-public OnPlayerRequestClass(playerid, classid)
-{
-    printf("OnPlayerRequestClass %d %d", playerid, classid);
     return 1;
 }
 
@@ -76,17 +69,35 @@ public OnPlayerUpdate(playerid)
     return 1;
 }
 
-public OnPlayerTakePlayerDamage( playerid, issuerid, &Float: amount, weaponid, bodypart )
-{
-    return 1;
-}
-
-public OnPlayerDeathEx( playerid, killerid, reason, Float: damage, bodypart )
-{
-    return 1;
-}
-
 public OnPlayerUpdateEx(playerid)
 {
+    return 1;
+}
+
+public OnPlayerDamage(&playerid, &Float:amount, &issuerid, &weapon, &bodypart)
+{
+    return 1;
+}
+
+public OnPlayerDeath(playerid, killerid, reason)
+{
+    Player_GiveDeath(playerid);
+    Player_GiveKill(killerid);
+    return 1;
+}
+
+CMD:kill(playerid, params[])
+{
+    new Float:health;
+    GetPlayerHealth(playerid, health);
+    DamagePlayer(playerid, health);
+    return 1;
+}
+
+CMD:slap(playerid, params[])
+{
+    new Float:x, Float:y, Float:z;
+    GetPlayerPos(playerid, x, y, z);
+    SetPlayerPos(playerid, x, y, z + 25.0);
     return 1;
 }

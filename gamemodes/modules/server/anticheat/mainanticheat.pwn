@@ -67,7 +67,7 @@ hook OnPlayerUpdate( playerid )
 		if( iState != PLAYER_STATE_SPECTATING )
 		{
         	//AC_CheckForAirbrake			( playerid, p_acUpdateTime[ playerid ], iState );
-			AC_CheckForHealthHacks		( playerid, p_acUpdateTime[ playerid ] );
+			//AC_CheckForHealthHacks		( playerid, p_acUpdateTime[ playerid ] );
         	//AC_CheckForFlyHacks			( playerid, p_acUpdateTime[ playerid ] );
         	//AC_CheckPlayerRemoteJacking ( playerid );
 		}
@@ -142,7 +142,7 @@ stock Float: ac_GetDistanceBetweenPlayers( iPlayer1, iPlayer2, &Float: fDistance
     return fDistance;
 }
 
-AC_GetLastUpdateTime( playerid ) {
+stock AC_GetLastUpdateTime( playerid ) {
 	return p_acUpdateTime[ playerid ];
 }
 
@@ -150,7 +150,7 @@ bool: AC_IsPlayerSpawned( playerid ) {
 	return p_acSpawned{ playerid };
 }
 
-AC_SetPlayerSpawned( playerid, bool: spawned ) {
+stock AC_SetPlayerSpawned( playerid, bool: spawned ) {
 	p_acSpawned{ playerid } = spawned;
 }
 
@@ -159,7 +159,7 @@ AC_SetPlayerSpawned( playerid, bool: spawned ) {
 #include "modules\server\anticheat\thermal_vision.pwn"
 #include "modules\server\anticheat\player_bugger.pwn"
 #include "modules\server\anticheat\bot_attack.pwn"
-#include "modules\server\anticheat\hitpoints.pwn"
+//#include "modules\server\anticheat\hitpoints.pwn"
 #include "modules\server\anticheat\weapon.pwn"
 #include "modules\server\anticheat\carmod_checker.pwn"
 #include "modules\server\anticheat\proaim.pwn"

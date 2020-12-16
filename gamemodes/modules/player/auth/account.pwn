@@ -1,5 +1,5 @@
 /* ** Includes ** */
-#include 							< YSI_Coding\y_hooks >
+#include 	< YSI_Coding\y_hooks >
 
 static BitArray: p_PlayerLogged< MAX_PLAYERS >,
 		p_AccountID[ MAX_PLAYERS ];
@@ -54,9 +54,7 @@ hook OnPlayerConnect(playerid)
 				}
 			}
 		}
-		else{
-			InterpolateCameraPos(playerid, 1343.996948, -1400.121704, 33.326297, 654.371826, -1400.027343, 32.899177, 15000);
-			InterpolateCameraLookAt(playerid, 1339.470458, -1400.027832, 31.204380, 659.131347, -1400.744018, 31.545204, 5000);		
+		else{	
 			CallLocalFunction("OnPlayerPassedBanCheck", "d", playerid);
 		}
 	}
@@ -145,7 +143,7 @@ Account_LoginDialog(playerid)
 			{
       			Kick(playerid);
 			}
-			Dialog_ShowCallback(playerid, using inline _anotherresponse, DIALOG_STYLE_MSGBOX, ""COL_WHITE"Account - Authentication", ""COL_WHITE"Are you sure you want to leave the server?", "Yes", "No" );
+			Dialog_ShowCallback(playerid, using inline _anotherresponse, DIALOG_STYLE_MSGBOX, ""COL_WHITE"Login", ""COL_WHITE"Are you sure you want to leave the server?", "Yes", "No" );
 
 		}
 		else{
@@ -157,7 +155,7 @@ Account_LoginDialog(playerid)
 			{
 				if (!cache_num_rows()){
 					// There was an error loading the data.  Try again.
-					SendError(playerid, "Login failed - please try again.");
+					SendError(playerid, "There was an error while loading your account, please relogin.");
 					Account_LoginDialog(playerid);
 					return;
 				}
@@ -168,13 +166,11 @@ Account_LoginDialog(playerid)
 				
 				if (!cache_get_value(0, "password", hash) || !cache_get_value_int(0, "id", accid)){
 					// There was an error loading the data.  Try again.
-					SendError(playerid, "Login failed - please try again.");
+					SendError(playerid, "There's an error while loading your account, please try again.");
 					Account_LoginDialog(playerid);
 					return;
 				}
-		
-				// Called when the comparison between the stored and entered
-				// passwords is complete (so the login is complete).
+
 				inline const Account_PasswordCheck(bool:same)
 				{
 					// Are the passwords the same?
@@ -185,14 +181,11 @@ Account_LoginDialog(playerid)
 					}
 					else
 					{
-						SendError(playerid, "Login failed - unknown username or password.");
-						
-						// Try again.
+						SendError(playerid, "Invalid password.");
 						Account_LoginDialog(playerid);
 					}
 				}
 				
-				// Check that the DB hash is equal to `inputtext` after hashing.
 				BCrypt_CheckInline(inputtext, hash, using inline Account_PasswordCheck);
 			}
 
@@ -201,10 +194,24 @@ Account_LoginDialog(playerid)
 	}
 
 	new string[256];
-	format(string, sizeof(string), ""COL_WHITE"Akun ("COL_GREEN"%s"COL_WHITE") telah teregistrasi.\n\
-	Masukan password untuk login.\n\n\
-	"COL_GREY"Jika kamu bukan pemilik akun ini, keluar lalu masuk dengan nickname lain.", ReturnPlayerName(playerid));
+	format(string, sizeof(string), "\
+	\\c"COL_WHITE"Welcome back, "COL_GREEN"%s\n \n\
+	\\c"COL_WHITE"Masukan password kamu untuk login.\n\n", \
+	ReturnPlayerName(playerid));
+
 	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_PASSWORD, ""COL_WHITE"Account - Authentication", string, "Login", "Leave");
+}
+
+hook OnPlayerLogin(playerid, accountid)
+{
+	SendServerMessage(playerid, "You successfully logged in.");
+	return 1;
+}
+
+hook OnPlayerRegister(playerid)
+{
+	SendServerMessage(playerid, "You successfully registered.");
+	return 1;
 }
 
 Player_IsLoggedIn(playerid) return Bit_Get(p_PlayerLogged, playerid);
@@ -215,9 +222,4 @@ Player_SetAccountID(playerid, value) {
 
 Player_GetAccountID(playerid) {
     return p_AccountID[playerid];
-}
-
-hook OnPlayerLogin(playerid, accountid)
-{
-	printf("Login completed %d", accountid);
 }

@@ -6,7 +6,7 @@
 	"dependencies": [
 		"sampctl/samp-stdlib",
 		"pawn-lang/YSI-Includes@5.x",
-		"pBlueG/SA-MP-MySQL",
+		"pBlueG/SA-MP-MySQL:R41-4",
 		"YashasSamaga/I-ZCMD",
 		"Y-Less/sscanf:2.10.2-r2",
 		"samp-incognito/samp-streamer-plugin:v2.9.4",
@@ -21,14 +21,15 @@
 		"oscar-broman/strlib",
 		"kristoisberg/samp-map-zones",
 		"Southclaws/formatex",
-		"dakyskye/pawn-env",
 		"TommyB123/eSelection",
-		"Sreyas-Sreelal/samp-bcrypt",
+		"Sreyas-Sreelal/samp-bcrypt:0.2.3",
 		"Fairuz-Afdhal/SAMPMailJS",
 		"BrunoBM16/samp-attachments-fix",
 		"Southclaws/samp-weapon-data",
 		"pawn-lang/pawn-stdlib",
-		"Southclaws/pawn-chrono"
+		"Southclaws/pawn-chrono:1.1.1",
+		"oscar-broman/samp-weapon-config",
+		"ziggi/FCNPC:v1.8.2"
 	],
 	"local": true,
 	"runtime": {
@@ -77,7 +78,9 @@
 				"gamemodes/modules/server/",
 				"gamemodes/modules/player/",
 				"gamemodes/modules/gta/",
-				"gamemodes/modules/admin/"
+				"gamemodes/modules/admin/",
+				"gamemodes/modules/objects",
+				"gamemodes/modules/player/auth"
 			],
 			"compiler": {}
 		}

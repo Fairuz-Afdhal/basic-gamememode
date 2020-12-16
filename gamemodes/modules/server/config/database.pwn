@@ -1,15 +1,8 @@
 /* * Database Configuration * */
-#if defined DEBUG_MODE
-	#define MYSQL_HOST				"127.0.0.1"
-	#define MYSQL_USER				"fairuz"
-	#define MYSQL_PASS				""
-	#define MYSQL_DATABASE			"wjcnr"
-#else
-	#define MYSQL_HOST				"127.0.0.1"
-	#define MYSQL_USER				"root"
-	#define MYSQL_PASS				""
-	#define MYSQL_DATABASE			"wjcnr"
-#endif
+#define MYSQL_HOST				"127.0.0.1"
+#define MYSQL_USER				"root"
+#define MYSQL_PASS				""
+#define MYSQL_DATABASE			"wjcnr_v3"
 
 /* * Includes * */
 #include        < YSI_Coding\y_hooks >
