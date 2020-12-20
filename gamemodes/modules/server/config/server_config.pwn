@@ -24,7 +24,7 @@ hook OnGameModeInit( )
 
 	//new modetext[32];
 	//format(modetext, sizeof(modetext), ""SERVER_MODE_TEXT" %s "UPDATE_CODENAME"", GetServerVersion());
-	//SetGameModeText( modetext );
+	SetGameModeText( "Cops and Robbers" );
 	SetServerRule( "hostname", SERVER_NAME );
 	SetServerRule( "language", SERVER_LANGUAGE );
 	SetServerRule( "mapname", SERVER_MAP );

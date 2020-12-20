@@ -40,5 +40,4 @@ hook OnGameModeInit()
 	SetDynamicObjectMaterialText( tmpVariable, 1, "SF-CNR", 130, "IMPACT", 70, 0, -16777216, 0, 1 );
 	SetDynamicObjectMaterialText( tmpVariable, 2, "SF-CNR", 130, "IMPACT", 70, 0, -16777216, 0, 1 );
 	SetDynamicObjectMaterialText( tmpVariable, 3, "SF-CNR", 130, "IMPACT", 70, 0, -16777216, 0, 1 );
-    return 1;
 }

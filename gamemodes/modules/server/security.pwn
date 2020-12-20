@@ -57,7 +57,6 @@ hook OnRconLoginAttempt( ip[ ], password[ ], success )
 			return 0;
 		}
 	}*/
-	return 1;
 }
 
 hook OnPlayerConnect( playerid )
@@ -78,21 +77,17 @@ hook OnPlayerConnect( playerid )
 	// get out the bots/invalid player ids
 	if (!( 0 <= playerid < MAX_PLAYERS ) ) {
 		Kick(playerid);
-		return Y_HOOKS_BREAK_RETURN_1;
 	}
 
 	// check if player name is "no-one" since it is used for unowned entities
 	if (!strcmp(ReturnPlayerName(playerid), "No-one", true)) {
 	 	Kick(playerid);
-		return Y_HOOKS_BREAK_RETURN_1;
 	}
 
 	// check advertisers
 	if (IsTextContainsIP(ReturnPlayerName(playerid))) {
 	 	Kick( playerid );
-		return Y_HOOKS_BREAK_RETURN_1;
 	}
-
 	return 1;
 }
 
@@ -107,7 +102,6 @@ hook OnPlayerDisconnect( playerid, reason )
 	if ( ! ( 0 <= playerid < MAX_PLAYERS ) ) {
 		return Y_HOOKS_BREAK_RETURN_1;
 	}
-
 	return 1;
 }
 
@@ -120,7 +114,6 @@ hook OnPlayerFloodControl( playerid, iCount, iTimeSpan ) {
     if ( iCount > 2 && iTimeSpan < 10000 && ! IsPlayerNpcEx( playerid ) ) {
    		BanEx( playerid, "BOT-SPAM" );
     }
-	return 1;
 }
 
 #if defined DEBUG_MODE

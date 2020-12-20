@@ -35,6 +35,7 @@
 #include    < gvar >
 #include    < geolite >
 #include    < chrono >
+#include    < merrandom >
 
 #include    <server>
 #include    <gta>
@@ -84,6 +85,13 @@ public OnPlayerDeath(playerid, killerid, reason)
     Player_GiveDeath(playerid);
     Player_GiveKill(killerid);
     return 1;
+}
+
+public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
+{
+    SetPlayerPosFindZ(playerid, fX, fY, fZ);
+	printf("Admin %s Teleported To %f, %f, %f", ReturnPlayerName(playerid), fX, fY, fZ);
+	return 1;
 }
 
 CMD:kill(playerid, params[])

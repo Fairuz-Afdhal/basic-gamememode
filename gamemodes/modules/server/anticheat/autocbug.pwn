@@ -26,7 +26,6 @@ hook OnPlayerConnect( playerid ) {
 	if ( 0 <= playerid < MAX_PLAYERS ) {
 		p_cbugWarns{ playerid } = 0;
 	}
-	return 1;
 }
 
 hook OnPlayerKeyStateChange( playerid, newkeys, oldkeys ) {
@@ -39,7 +38,6 @@ hook OnPlayerKeyStateChange( playerid, newkeys, oldkeys ) {
 			p_cbugKeyTicks[ playerid ] = GetTickCount( ), p_cbugWarns{ playerid } = 0;
 		}
 	}
-	return 1;
 }
 
 AC_CheckForAutoCbug( playerid, weaponid )

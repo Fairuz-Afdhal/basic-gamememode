@@ -36,7 +36,6 @@
 hook OnGameModeInit() 
 {
 	mysql_tquery(g_SQL, "SELECT * FROM server", "OnLoadServerVariables", "" );
-	return 1;
 }
 
 /* ** Functions ** */

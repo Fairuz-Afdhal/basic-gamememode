@@ -9,5 +9,4 @@ hook OnGameModeInit()
     SetVehiclePassengerDamage(true);
     SetDisableSyncBugs(true);
     SetCustomVendingMachines(true);
-    return 1;
 }

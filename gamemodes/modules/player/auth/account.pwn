@@ -19,11 +19,11 @@ hook OnPlayerConnect(playerid)
 				Timestamp: bannedExpire = Timestamp:0,
 				bannedexpireDate[64];
 			
-			cache_get_value_int(0, "EXPIRE", _:bannedExpire);
-			cache_get_value_name(0, "BANBY", bannedbyUser);
-			cache_get_value_name(0, "REASON", bannedReason);
-			cache_get_value_name(0, "NAME", bannedUser);
-			cache_get_value_name(0, "IP", bannedIP);
+			cache_get_value_int(0, "expire", _:bannedExpire);
+			cache_get_value_name(0, "banby", bannedbyUser);
+			cache_get_value_name(0, "reason", bannedReason);
+			cache_get_value_name(0, "name", bannedUser);
+			cache_get_value_name(0, "ip", bannedIP);
 		
 			if (!bannedExpire)
 			{
@@ -61,7 +61,7 @@ hook OnPlayerConnect(playerid)
 
 	static const query[] = "SELECT * FROM bans WHERE (name='%e' OR ip='%e') LIMIT 0,1";
 	MySQL_TQueryInline(g_SQL, using inline OnPlayerBannedCheck, query, ReturnPlayerName(playerid), ReturnPlayerIP(playerid));
-    return 1;
+	return 1;
 }
 
 hook OnPlayerPassedBanCheck( playerid )
@@ -79,8 +79,8 @@ hook OnPlayerPassedBanCheck( playerid )
 	}
 	static const query[] = "SELECT name FROM users WHERE name = '%e' LIMIT 0,1";
 	MySQL_TQueryInline(g_SQL, using inline OnPlayerDataLoad, query, ReturnPlayerName(playerid));
-	return 1;
 }
+
 /* ** Functions ** */
 Account_RegisterDialog(playerid)
 {
@@ -99,7 +99,6 @@ Account_RegisterDialog(playerid)
 	new string[256];
 	format(string, sizeof(string), ""COL_WHITE"Akun ("COL_RED"%s"COL_WHITE") belum teregistrasi.\n\n"COL_RED"Password harus 3-24 karakter.\n\n"COL_GREY"Jangan pernah share password dengan siapapun!", ReturnPlayerName(playerid));
 	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""COL_WHITE"Account - Register", string, "Register", "Leave");
-	return 1;
 }
 
 Account_Create(playerid, password[])
@@ -205,13 +204,16 @@ Account_LoginDialog(playerid)
 hook OnPlayerLogin(playerid, accountid)
 {
 	SendServerMessage(playerid, "You successfully logged in.");
-	return 1;
+	GameTextForPlayer(playerid, sprintf("~w~Welcome,~n~~g~%s", ReturnPlayerName(playerid)), 5000, 1);
 }
 
 hook OnPlayerRegister(playerid)
 {
 	SendServerMessage(playerid, "You successfully registered.");
-	return 1;
+	new r = random( sizeof( g_AirportSpawns ) );
+	SetPlayerFacingAngle(playerid, g_AirportSpawns[r] [ RANDOM_SPAWN_A ] );
+	SetPlayerInterior(playerid, g_AirportSpawns[r] [ RANDOM_SPAWN_INTERIOR ] );
+	SetPlayerPos(playerid, g_AirportSpawns[r] [ RANDOM_SPAWN_X ], g_AirportSpawns[r] [ RANDOM_SPAWN_Y ], g_AirportSpawns[r] [ RANDOM_SPAWN_Z ] );
 }
 
 Player_IsLoggedIn(playerid) return Bit_Get(p_PlayerLogged, playerid);

@@ -56,6 +56,10 @@ GetRangeIP(szIP[ ], iSize = sizeof(szIP))
 	format(szIP, iSize, "%s.*.*", szIP);
 }
 
+IsValidSkin( skinid ) {
+	return ! ( skinid == 74 || skinid > 311 || skinid < 0 );
+}
+
 forward OnServerUpdate();
 task _OnServerTick[1000]()
 {
