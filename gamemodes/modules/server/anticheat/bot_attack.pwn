@@ -20,7 +20,6 @@ static botattack_ConnectionSpamCount = 0;
 hook OnGameModeInit()
 {
 	botattack_ServerInitTS = gettime( );
-	return 1;
 }
 
 hook OnIncomingConnection( playerid, ip_address[ ], port )

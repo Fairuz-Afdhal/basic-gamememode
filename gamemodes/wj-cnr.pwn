@@ -11,6 +11,7 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS 200
 
+#include    < log-plugin >
 #include    < a_mysql >
 #include    < samp_bcrypt >
 
@@ -35,7 +36,7 @@
 #include    < gvar >
 #include    < geolite >
 #include    < chrono >
-#include    < merrandom >
+#include    < progress2 >
 
 #include    <server>
 #include    <gta>
@@ -62,6 +63,7 @@ public OnPlayerRequestSpawn(playerid)
 
 public OnPlayerSpawn(playerid)
 {
+ 	CallLocalFunction("PlayerTextdraw_Load", "d", playerid);
     return 1;
 }
 

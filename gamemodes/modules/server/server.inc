@@ -3,6 +3,7 @@
  */
 
 // config
+#include "modules\server\server_logs.pwn"
 #include "modules\server\config\database.pwn"
 #include "modules\server\config\server_config.pwn"
 #include "modules\server\config\colors.pwn"
@@ -15,3 +16,5 @@
 #include "modules\server\security.pwn"
 #include "modules\server\floodcontrols.pwn"
 #include "modules\server\server_vars.pwn"
+
+#include "modules\server\game_time.pwn"

@@ -17,11 +17,10 @@ hook OnGameModeInit()
     g_SQL = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE, options);
 
     if(mysql_errno() != 0) 
-		print("[MySQL]: Could not connect to database!");
-	else
-		print( "[MySQL]: Connection to database is successful." );
+        Log(systemlog, FATAL, "Connection to database failed.");
+    else
+        Log(systemlog, INFO, "Connected to MySQL database." );
     
     // enable mysql logs
-	mysql_log( ERROR | WARNING );
-    return true;
+    mysql_log( ERROR | WARNING );
 }

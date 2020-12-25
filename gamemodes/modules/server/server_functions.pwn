@@ -1,5 +1,5 @@
 #define function%1(%2)                      forward%1(%2); public%1(%2)
-#define RandomEx(%0,%1)                     (random((%1) - (%0)) + (%0))
+#define RandomEx(%0,%1)                     (random(%1 - %0 + 1) + %0)
 #define HOLDING(%0)                         ((newkeys & (%0)) == (%0))
 #define PRESSED(%0)                         (((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
 #define RELEASED(%0)                        (((newkeys & (%0)) != (%0)) && ((oldkeys & (%0)) == (%0)))
@@ -10,6 +10,12 @@
 #define BCRYPT_COST 12
 
 new Timestamp:gTime;
+
+enum {
+    ENEX_STREAMER_IDENTIFIER = 100,     // Entrance/Exits around San Fierro
+    HOUSES_STREAMER_IDENTIFIER,         // Entrance/Exit for houses around San Andreas.
+    FURNITURE_STREAMER_IDENTIFIER       // Furniture Objects
+}
 
 IsTextContainsIP(const string[])
 {
@@ -69,3 +75,13 @@ task _OnServerTick[1000]()
 
 stock GetServerTime() 
 	return _:gTime;
+
+TimeConvert( seconds )
+{
+	new szTime[32];
+ 	format(szTime, sizeof(szTime), "%02d:%02d", floatround(seconds / 60), seconds - floatround((seconds / 60) * 60));
+	return szTime;
+}
+
+randarg( ... )
+	return getarg( random( numargs( ) ) );

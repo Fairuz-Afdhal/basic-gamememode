@@ -3,21 +3,22 @@
 /* ** Variables ** */
 static p_Class[MAX_PLAYERS];
 
-#define CLASS_CIVILIAN              ( 0 )
-#define CLASS_POLICE              	( 1 )
-#define CLASS_MEDIC					( 2 )
+enum {
+    CLASS_CIVILIAN = 0,
+    CLASS_POLICE,
+	CLASS_MEDIC
+}
 
 /* ** Hooks ** */
 hook OnPlayerConnect(playerid)
 {
 	TogglePlayerSpectating(playerid, true);
 	defer Camera_Login(playerid);
-	return 1;
 }
 
 hook OnPlayerRequestClass(playerid, classid)
 {
-    SetSpawnInfo(playerid, 0, 270, p_LastPosX[playerid], p_LastPosY[playerid], p_LastPosZ[playerid], 10.0, 0, 0, 0, 0, 0, 0);
+	SetSpawnInfo(playerid, 0, Player_GetSkin(playerid), p_LastPosX[playerid], p_LastPosY[playerid], p_LastPosZ[playerid], 10.0, 0, 0, 0, 0, 0, 0);
 	SpawnPlayer(playerid);
 	return 0;
 }
@@ -78,8 +79,7 @@ SetPlayerColorToTeam( playerid )
 timer Camera_Login[300](playerid) 
 {
 	InterpolateCameraPos(playerid, 1343.996948, -1400.121704, 33.326297, 654.371826, -1400.027343, 32.899177, 15000);
-	InterpolateCameraLookAt(playerid, 1339.470458, -1400.027832, 31.204380, 659.131347, -1400.744018, 31.545204, 5000);
-	return 1;	
+	InterpolateCameraLookAt(playerid, 1339.470458, -1400.027832, 31.204380, 659.131347, -1400.744018, 31.545204, 5000);	
 }
 
 Player_GetClass(playerid)

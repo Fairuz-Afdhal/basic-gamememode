@@ -37,8 +37,7 @@ hook OnGameModeInit( )
 
 	// start ColAndreas
 	//CA_Init();
-
-	return true;
+	Log(mainlog, INFO, "Server configuration loaded.");
 }
 
 SetServerRule( const rule[ ], const value[ ] ) {

@@ -7,6 +7,7 @@ static BitArray: p_PlayerLogged< MAX_PLAYERS >,
 /* ** Hooks ** */
 hook OnPlayerConnect(playerid)
 {
+	CallLocalFunction("PlayerTextdraw_Unload", "d", playerid);
 	inline OnPlayerBannedCheck()
 	{
         if (cache_num_rows())
@@ -41,7 +42,6 @@ hook OnPlayerConnect(playerid)
 					SendServerMessage(playerid, "The suspension of this account has expired as of now, this account is available for playing." );
 					mysql_format(g_SQL, query, sizeof(query), "DELETE FROM `BANS` WHERE `NAME`= '%e' OR `IP` = '%e'", ReturnPlayerName(playerid), ReturnPlayerIP(playerid));
 					mysql_tquery(g_SQL, query, "", "");
-					return 1;
 				}
 				else
 				{
@@ -194,11 +194,11 @@ Account_LoginDialog(playerid)
 
 	new string[256];
 	format(string, sizeof(string), "\
-	\\c"COL_WHITE"Welcome back, "COL_GREEN"%s\n \n\
-	\\c"COL_WHITE"Masukan password kamu untuk login.\n\n", \
+	"COL_WHITE"Welcome back, "COL_GREEN"%s\n \n\
+	"COL_WHITE"Masukan password untuk login\n\n", \
 	ReturnPlayerName(playerid));
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_PASSWORD, ""COL_WHITE"Account - Authentication", string, "Login", "Leave");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_PASSWORD, ""COL_WHITE"WJCNR - Login", string, "Login", "Leave");
 }
 
 hook OnPlayerLogin(playerid, accountid)
@@ -207,14 +207,6 @@ hook OnPlayerLogin(playerid, accountid)
 	GameTextForPlayer(playerid, sprintf("~w~Welcome,~n~~g~%s", ReturnPlayerName(playerid)), 5000, 1);
 }
 
-hook OnPlayerRegister(playerid)
-{
-	SendServerMessage(playerid, "You successfully registered.");
-	new r = random( sizeof( g_AirportSpawns ) );
-	SetPlayerFacingAngle(playerid, g_AirportSpawns[r] [ RANDOM_SPAWN_A ] );
-	SetPlayerInterior(playerid, g_AirportSpawns[r] [ RANDOM_SPAWN_INTERIOR ] );
-	SetPlayerPos(playerid, g_AirportSpawns[r] [ RANDOM_SPAWN_X ], g_AirportSpawns[r] [ RANDOM_SPAWN_Y ], g_AirportSpawns[r] [ RANDOM_SPAWN_Z ] );
-}
 
 Player_IsLoggedIn(playerid) return Bit_Get(p_PlayerLogged, playerid);
 

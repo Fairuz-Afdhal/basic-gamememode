@@ -81,7 +81,6 @@ stock GivePlayerWantedLevel(playerid, level )
 
 	SendClientMessageFormatted( playerid, -1, ""COL_GOLD"[CRIME]"COL_WHITE" Your wanted level has been %s by %d! Wanted level: %d", current_wanted + level > current_wanted ? ( "increased" ) : ( "decreased" ), level, current_wanted + level );
 	SetPlayerWantedLevel( playerid, current_wanted + level);
-	return 1;
 }
 
 

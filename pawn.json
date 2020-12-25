@@ -17,7 +17,6 @@
 		"AGraber/samp-compat:1.0.2",
 		"Southclaws/progress2:v2.3.0",
 		"NexiusTailer/Nex-AC",
-		"Zeex/samp-plugin-crashdetect:v4.20",
 		"oscar-broman/strlib",
 		"kristoisberg/samp-map-zones",
 		"Southclaws/formatex",
@@ -29,12 +28,17 @@
 		"pawn-lang/pawn-stdlib",
 		"Southclaws/pawn-chrono:1.1.1",
 		"oscar-broman/samp-weapon-config",
-		"ziggi/FCNPC:v1.8.2"
+		"ziggi/FCNPC:v1.8.2",
+		"Southclaws/progress2",
+		"maddinat0r/samp-log"
 	],
 	"local": true,
 	"runtime": {
 		"version": "0.3.7",
 		"mode": "server",
+		"filterscripts": [
+			"dev"
+		],
 		"rcon_password": "password",
 		"port": 7777,
 		"hostname": "SA-MP Server",
