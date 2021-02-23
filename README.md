@@ -1,11 +1,8 @@
-# wjcnrv3
+# basic gamemode
 
-[![sampctl](https://img.shields.io/badge/sampctl-wjcnrv3-2f2f2f.svg?style=for-the-badge)](https://github.com/Fairuz-Afdhal/wjcnrv3)
+## About
 
-
-## West Java Cops and Robbers v3
-
-WJCNR v3 is version 3 of WJCNR, the goal is to make the gamemode up to date with current programming styles and using sampctl. Currently the gamemode is not playable, the goal is to make it compile smoothly.
+The project was meant to be my gamemode but now it's public, I will continue it later.
 
 # Compiling
 Run the gamemode using sampctl.
