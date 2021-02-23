@@ -1,6 +1,6 @@
 {
 	"user": "Fairuz-Afdhal",
-	"repo": "wjcnrv3",
+	"repo": "basic-gamemode",
 	"entry": "gamemodes/wj-cnr.pwn",
 	"output": "gamemodes/wj-cnr.amx",
 	"dependencies": [
